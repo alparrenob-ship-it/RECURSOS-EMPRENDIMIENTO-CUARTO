@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 297" role="img" aria-labelledby="title desc">
+<title id="title">Actividad: Mi talento</title><desc id="desc">Ficha vertical A4 para dibujar o escribir un talento y marcar cómo ayuda al equipo.</desc>
+<rect x="2.5" y="2.5" width="205" height="292" rx="6" fill="white" stroke="#13bdc9" stroke-width="4"/>
+<g font-family="Arial,sans-serif" fill="#142b47">
+<circle cx="27" cy="31" r="20" fill="white" stroke="#f27e0d" stroke-width="2"/><text x="27" y="24" text-anchor="middle" font-size="7" font-weight="bold">Curso:</text><text x="27" y="37" text-anchor="middle" font-size="7">______</text>
+<text x="115" y="24" text-anchor="middle" fill="#079bb6" font-size="18" font-weight="900" letter-spacing="1">ACTIVIDAD</text>
+<rect x="53" y="32" width="105" height="22" rx="6" fill="#c7f2fa"/><text x="105" y="40" text-anchor="middle" font-size="7" font-weight="bold">Nombre y apellido</text><path d="M60 49H152" stroke="#142b47" stroke-width=".5"/>
+<rect x="162" y="32" width="40" height="22" rx="5" fill="#d0f6d0" stroke="#4ccf65"/><text x="182" y="40" text-anchor="middle" font-size="5.8" font-weight="bold">Calificación:</text><rect x="165" y="42" width="34" height="9" rx="3" fill="white"/>
+<text x="193" y="64" text-anchor="end" font-size="5.5" font-style="italic">Lcda. Anita Parreño</text><text x="193" y="72" text-anchor="end" font-size="5">Fecha: ____ / ____ / ______</text>
+<rect x="7" y="77" width="196" height="18" rx="9" fill="#c9f3fa"/><text x="105" y="84" text-anchor="middle" font-size="6.2" font-weight="bold">Indicación: Dibuja o escribe un talento y selecciona</text><text x="105" y="91" text-anchor="middle" font-size="6.2" font-weight="bold">cómo tu talento puede ayudar al equipo.</text>
+<rect x="8" y="99" width="194" height="136" rx="7" fill="white" stroke="#0fc0c7" stroke-width="2.5"/><rect x="13" y="103" width="84" height="16" rx="8" fill="#ffe272"/><text x="55" y="114" text-anchor="middle" font-size="10" font-weight="900">Mi talento</text>
+<text x="189" y="115" text-anchor="end" fill="#f1af19" font-size="18">✎</text>
+<rect x="7" y="239" width="196" height="17" rx="8" fill="#f9d6e4"/><text x="105" y="250" text-anchor="middle" font-size="6.7" font-weight="bold">Con mi talento puedo ayudar al equipo a:</text>
+</g>
+<g font-family="Arial,sans-serif" font-size="5.2" font-weight="bold" fill="#142b47">
+<rect x="7" y="260" width="37" height="29" rx="5" fill="#d1f2ff"/><circle cx="13" cy="274" r="4" fill="white" stroke="#142b47" stroke-width=".8"/><text x="20" y="276">Crear</text>
+<rect x="46" y="260" width="37" height="29" rx="5" fill="#fff2bd"/><circle cx="52" cy="274" r="4" fill="white" stroke="#142b47" stroke-width=".8"/><text x="58" y="276">Organizar</text>
+<rect x="85" y="260" width="38" height="29" rx="5" fill="#dcf4df"/><circle cx="91" cy="274" r="4" fill="white" stroke="#142b47" stroke-width=".8"/><text x="97" y="276">Comunicar</text>
+<rect x="125" y="260" width="38" height="29" rx="5" fill="#e9e0ff"/><circle cx="131" cy="274" r="4" fill="white" stroke="#142b47" stroke-width=".8"/><text x="137" y="276">Investigar</text>
+<rect x="165" y="260" width="38" height="29" rx="5" fill="#fbd9e5"/><circle cx="171" cy="274" r="4" fill="white" stroke="#142b47" stroke-width=".8"/><text x="177" y="276">Ayudar</text>
+</g>
+</svg>
