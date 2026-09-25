@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 460" role="img" aria-labelledby="t d">
+<title id="t">Ejemplo de mi mano de talentos</title><desc id="d">Una mano colorida contiene un lápiz, con un ejemplo de cómo el talento de dibujar ayuda al equipo.</desc>
+<rect width="600" height="460" rx="28" fill="#f0fbfd"/>
+<text x="300" y="52" text-anchor="middle" fill="#086f89" font-family="Arial,sans-serif" font-weight="bold" font-size="26">Ejemplo: mi talento es dibujar</text>
+<path d="M188 310c-18-26-42-57-21-73 15-12 30 0 47 16V115c0-29 38-29 38 0v82-113c0-27 39-27 39 0v113-98c0-27 39-27 39 0v102-78c0-27 39-27 39 0v156c11-20 25-34 42-24 19 12 4 39-10 63-13 24-26 68-53 79-45 19-111 19-145-6-16-12-24-42-15-81Z" fill="#ffe2b5" stroke="#c98755" stroke-width="6" stroke-linejoin="round"/>
+<path d="m243 277 71-75 42 39-71 75-46 12Z" fill="#ffcd48" stroke="#a65b1d" stroke-width="5"/><path d="m243 277-4 51 46-12Z" fill="#f7d3b1" stroke="#a65b1d" stroke-width="5"/><path d="m239 328 15-18 7 14Z" fill="#233d55"/><path d="m314 202 19-19 42 39-19 19Z" fill="#e9538b" stroke="#a65b1d" stroke-width="5"/>
+<path d="M63 90c26-25 54-25 81 0M455 95c25-25 52-25 77 0" fill="none" stroke="#ffbb32" stroke-width="9" stroke-linecap="round"/>
+<rect x="54" y="379" width="492" height="57" rx="18" fill="#fff" stroke="#58c7d5" stroke-width="3"/><text x="300" y="414" text-anchor="middle" fill="#17304c" font-family="Arial,sans-serif" font-size="21" font-weight="bold">Ayudo a crear el cartel del equipo.</text>
+</svg>
