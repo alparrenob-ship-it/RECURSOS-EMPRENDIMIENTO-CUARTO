@@ -2,7 +2,7 @@
 /* PDF export: print a private document generated in the browser. */
 function saveTeamsPdf(){
  let grade=activeGrade===4?4:activeGrade,parallel=grade===4?course:(g57State.course||'A'),date=grade===4?document.getElementById('classDate').value:g57Storage().date,teams=[];
- if(grade===4){const state=s2State();if(!state)return;teams=Array.from({length:6},(_,i)=>({name:state.names[i]||'',norm:state.norms[i]||'',members:s2Names().filter(n=>state.assignment[n]===i).map(name=>({name,role:state.roles[name]||'Por asignar'}))}));}
+ if(grade===4){const state=s2State();if(!state)return;teams=Array.from({length:s2GroupCount(state)},(_,i)=>({name:state.names[i]||'',norm:state.norms[i]||'',members:s2Names().filter(n=>state.assignment[n]===i).map(name=>({name,role:state.roles[name]||'Por asignar'}))}));}
  else{const state=eqState();if(!state)return;teams=state.map(t=>({name:t.name||'',norm:t.norm||'',members:t.members.map(m=>({name:m.name,role:m.roles.join(' + ')||'Por asignar'}))}));}
  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const colors=['#ef8fba','#71c9e7','#ffd465','#83d9ad','#aa9cec','#edaa83'];
