@@ -30,3 +30,41 @@ function dtRender(){const p=dtRead(),teams=dtTeams();dtRoot.innerHTML=`<div clas
 dtRoot.addEventListener('input',e=>{const k=e.target.dataset.dtfield;if(!k)return;dtSave({[k]:e.target.value});if(['defineUser','defineNeed','defineWhy'].includes(k))document.getElementById('dtProblem').innerHTML=dtProblem(dtRead())});
 dtRoot.addEventListener('change',async e=>{const x=e.target;if(x.id==='dtGrade'||x.id==='dtCourse'||x.id==='dtTeam'){if(x.id==='dtGrade'){dt.grade=+x.value;if(dt.grade===6&&dt.course==='C')dt.course='A';dt.team=0}else if(x.id==='dtCourse'){dt.course=x.value;dt.team=0}else dt.team=+x.value;dtRender();return}if(x.dataset.dtfield)dtSave({[x.dataset.dtfield]:x.value});if(x.dataset.dtcheck!==undefined){const k='checks'+dt.session,p=dtRead(),set=new Set(p[k]||[]);x.checked?set.add(+x.dataset.dtcheck):set.delete(+x.dataset.dtcheck);dtSave({[k]:[...set]});document.getElementById('dtScore').innerHTML=dtScore(dtRead())}if(x.id==='dtImage'&&x.files[0]){const file=x.files[0];if(!file.type.startsWith('image/'))return;const reader=new FileReader();reader.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),r=Math.min(1,1100/im.width);c.width=im.width*r;c.height=im.height*r;c.getContext('2d').drawImage(im,0,0,c.width,c.height);if(dtSave({image:c.toDataURL('image/jpeg',.8)}))dtRender()};im.src=reader.result};reader.readAsDataURL(file)}if(x.id==='dtImport'&&x.files[0]){try{const p=JSON.parse(await x.files[0].text());if(p.type!=='emprendimiento-design'||!p.data||typeof p.data!=='object'||Array.isArray(p.data))throw Error();if(p.data.image&&!/^data:image\/(jpeg|png|webp);base64,/.test(p.data.image))delete p.data.image;if(dtSave(p.data))dtRender()}catch{alert('Este archivo no es un proyecto de Design thinking válido.')}}});
 dtRoot.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const d=b.dataset;if(d.dtstep!==undefined){dt.step=+d.dtstep;dtRender()}if(d.dtreveal!==undefined)document.getElementById('dtReveal').hidden=false;if(d.dtquiz!==undefined)document.getElementById('dtQuiz').textContent=d.dtquiz==='1'?'✓ Describe un usuario, su necesidad y una razón.':'Es una solución. Antes necesitamos comprender la dificultad.';if(d.dtvalidate!==undefined){const p=dtRead();document.getElementById('dtValidation').textContent=p.defineUser&&p.defineNeed&&p.defineWhy?'✓ Incluye usuario, necesidad y razón. Revisen que la necesidad no sea ya una solución y que la razón tenga evidencia.':'Completen usuario, necesidad y razón antes de continuar.'}if(d.dtvote!==undefined||d.dtunvote!==undefined){const p=dtRead(),v=p.votes||[],i=+(d.dtvote??d.dtunvote);v[i]=Math.max(0,(v[i]||0)+(d.dtvote!==undefined?1:-1));dtSave({votes:v});dtRender()}if(d.dtsave!==undefined&&dtSave({savedAt:new Date().toISOString()}))document.getElementById('dtStatus').textContent='✓ Cambios guardados para este curso, paralelo y equipo en este navegador.';if(d.dtremoveimage!==undefined){dtSave({image:''});dtRender()}if(d.dtnext!==undefined)dtOpen(dt.session%5+1);if(d.dtexport!==undefined){const blob=new Blob([JSON.stringify({type:'emprendimiento-design',grade:dt.grade,course:dt.course,team:dt.team,data:dtRead()},null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`design-thinking-${dt.grade}${dt.course}-equipo-${dt.team+1}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}});
+
+/* Navegación guiada y ejemplos visuales del taller. */
+const dtMomentNames=['Activación','Anticipación','Construcción','Consolidación'];
+const dtScenes=[
+ ['Escucha antes de imaginar','Una estudiante busca su lápiz en la mochila.','Observar','Vemos que revisa varios bolsillos. Todavía no sabemos cómo se siente.','Preguntar','¿Qué te cuesta al buscar tus útiles? Escucha su respuesta.'],
+ ['Un problema claro','El estudiante pierde tiempo buscando sus útiles.','Ver necesidad','Necesita encontrar sus útiles rápidamente.','Ver reto','¿Cómo podríamos ayudarle a encontrar sus útiles sin perder tiempo?'],
+ ['Muchas ideas posibles','Una misma necesidad puede tener distintas soluciones.','Idea sencilla','Separadores de cartón con símbolos para organizar los útiles.','Combinar ideas','Combina separadores y etiquetas de colores. Después compara su utilidad.'],
+ ['Construye para aprender','Prueba primero una función con un modelo sencillo.','Ver modelo','Dibuja y recorta un organizador de cartón. No necesita quedar perfecto.','Ver función','Pide a alguien encontrar un lápiz usando el modelo.'],
+ ['La prueba enseña','Otro equipo usa el modelo mientras observamos.','Ver evidencia','Registra dónde buscó y si encontró el lápiz sin ayuda.','Decidir mejora','Si no entiende las etiquetas, cambia sus símbolos y vuelve a probar.']
+];
+function dtSceneArt(s){
+ const colors=['#f9ca54','#6bd3e0','#b59af4','#7ddba9','#f4a6be'];
+ return '<svg viewBox="0 0 600 230" role="img" aria-label="Ejemplo ilustrado: estudiante, mochila y útiles escolares"><rect x="4" y="4" width="592" height="222" rx="28" fill="'+colors[s-1]+'"/><circle cx="100" cy="68" r="30" fill="#ffd9bd"/><path d="M62 160v-40q38-35 76 0v40" fill="#346ca5"/><rect x="210" y="60" width="120" height="145" rx="24" fill="#497fc3" stroke="#17304c" stroke-width="5"/><path d="M245 60v-18q25-25 50 0v18" fill="none" stroke="#17304c" stroke-width="7"/><rect x="230" y="125" width="80" height="55" rx="10" fill="#f6d475"/><path d="M380 165l80-100 16 13-80 100z" fill="#fff" stroke="#17304c" stroke-width="4"/><text x="500" y="145" font-size="66" text-anchor="middle">'+dtIcons[s-1]+'</text></svg>';
+}
+const dtGuidedRender=dtRender;
+dtRender=function(){
+ dtGuidedRender();
+ if(dt.step<0)return;
+ const card=dtRoot.querySelector(':scope > .card');
+ const scene=dtScenes[dt.session-1];
+ if(dt.step===0||dt.step===1){
+ const visual=document.createElement('div');visual.className='dtScene';
+ visual.innerHTML=dtSceneArt(dt.session)+'<div><h3>'+scene[0]+'</h3><p>'+scene[1]+'</p><div class="dtSceneButtons"><button class="action" data-dtscene="0">'+scene[2]+'</button><button class="action" data-dtscene="1">'+scene[4]+'</button></div><p class="answer" id="dtSceneAnswer" role="status" hidden></p></div>';
+ card.prepend(visual);
+ }
+ const nav=document.createElement('nav');nav.className='dtGuidedNav';nav.setAttribute('aria-label','Momentos de la sesión');
+ nav.innerHTML='<button class="action" data-dtmove="-1">'+(dt.step===0?'← Portada':'← '+dtMomentNames[dt.step-1])+'</button><div class="dtMomentRoute">'+dtMomentNames.map((n,i)=>'<button data-dtstep="'+i+'" aria-current="'+(i===dt.step?'step':'false')+'"><span>'+(i+1)+'</span>'+n+'</button>').join('')+'</div><button class="action primary" data-dtmove="1">'+(dt.step===3?(dt.session===5?'Volver a Empatizar ↻':'Continuar a '+dtPhases[dt.session]+' →'):'Continuar a '+dtMomentNames[dt.step+1]+' →')+'</button>';
+ dtRoot.append(nav);
+};
+dtRoot.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.dtscene!==undefined){const a=document.getElementById('dtSceneAnswer');a.hidden=false;a.textContent=dtScenes[dt.session-1][+b.dataset.dtscene===0?3:5];if(typeof deckPaginate==='function')requestAnimationFrame(deckPaginate);}
+ if(b.dataset.dtmove!==undefined){
+ const next=dt.step+Number(b.dataset.dtmove);
+ if(next>3){dtOpen(dt.session%5+1);return;}
+ dt.step=next;dtRender();
+ }
+});
