@@ -2,7 +2,7 @@
 dtPhases.push('Detectives de necesidades');dtIcons.push('🔎');dtGoals.push('Explorar el entorno escolar, comprender una necesidad y completar las misiones de diseño en equipo.');
 dtMenu.querySelector('.weekLinks').insertAdjacentHTML('beforeend','<button data-dtopen="6">Sesión 6 · Detectives de necesidades</button>');
 const detectiveSlides=[
- ['La aventura comienza',null,'Lean el acertijo físico, busquen juntos la tarjeta del problema en el pasillo y completen las misiones. Al terminar cada misión, la docente valida el trabajo y entrega una estrella.'],
+ ['La aventura comienza','reglas','Lean el acertijo físico, busquen juntos la tarjeta del problema en el pasillo y completen las misiones. Al terminar cada misión, la docente valida el trabajo y entrega una estrella.'],
  ['Rúbrica de evaluación','rubrica','Disciplina, orden y organización: 2,5 puntos. Cada una de las seis misiones: 1,25 puntos. Total: 10 puntos.'],
  ['Nuestra hoja de logros','logros','Cada misión validada gana una estrella. Los logros se guardan por curso, paralelo y equipo en este navegador.'],
  ['Tarjeta física del acertijo','acertijo','Cada equipo recibe el acertijo de su color. Este ejemplo es del equipo rojo: lean las pistas y descubran el lugar.'],
