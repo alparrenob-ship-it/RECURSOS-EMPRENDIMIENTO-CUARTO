@@ -36,3 +36,19 @@ body.deck-detectives .shell{padding:8px 14px}
 .deck-detectives #deckTools button{font-size:18px;padding:8px 12px}.deck-detectives #deckPage{font-size:18px}
 .sheetStar5{left:37.3%;top:80%}.sheetStar6{left:59%;top:80%}
 }
+
+/* El taller general imponía max-height:660px: quitarlo solo para sesión 6. */
+@media screen{
+.deck-detectives.deck-activity .detectiveCard{height:884px!important;max-height:none!important;padding:0 6px!important;border:0;box-shadow:none;background:white}
+.deck-detectives.deck-activity .detectivePanel{grid-template-rows:minmax(0,1fr) 50px;gap:3px}
+.deck-detectives.deck-activity .detectivePanel>header{display:none}
+.deck-detectives.deck-activity #deckTools{display:none!important}
+.deck-detectives .detectiveFigure{align-self:center;justify-self:center;max-height:none!important}
+.deck-detectives .detectiveFigure img{max-height:none!important;display:block;margin:auto}
+.deck-detectives .detectiveNav{background:#f5fafb;border-radius:12px;padding:3px;gap:8px}
+.deck-detectives .detectiveNav select{max-width:390px}
+.detectiveOptions{position:relative;font-size:21px}.detectiveOptions summary{cursor:pointer;border:2px solid #d4e5eb;border-radius:12px;padding:7px 14px;background:white;white-space:nowrap;list-style:none;font-weight:750}
+.detectiveOptions>div{position:absolute;bottom:50px;left:0;z-index:10;background:white;border:2px solid #059aad;border-radius:16px;padding:12px;display:grid;gap:8px;min-width:270px;box-shadow:0 12px 30px #17304c33}
+.deck-detectives .detectiveDescription{top:auto;bottom:65px}
+.deck-detectives .detectiveIntro{margin:15px}
+}
