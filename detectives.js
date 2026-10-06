@@ -1,0 +1,42 @@
+/* Sesión 6: imágenes originales, navegación y logros por equipo. */
+dtPhases.push('Detectives de necesidades');dtIcons.push('🔎');dtGoals.push('Explorar el entorno escolar, comprender una necesidad y completar las misiones de diseño en equipo.');
+dtMenu.querySelector('.weekLinks').insertAdjacentHTML('beforeend','<button data-dtopen="6">Sesión 6 · Detectives de necesidades</button>');
+const detectiveSlides=[
+ ['La aventura comienza',null,'Lean el acertijo físico, busquen juntos la tarjeta del problema en el pasillo y completen las misiones. Al terminar cada misión, la docente valida el trabajo y entrega una estrella.'],
+ ['Rúbrica de evaluación','rubrica','Disciplina, orden y organización: 2,5 puntos. Cada una de las seis misiones: 1,25 puntos. Total: 10 puntos.'],
+ ['Nuestra hoja de logros','logros','Cada misión validada gana una estrella. Los logros se guardan por curso, paralelo y equipo en este navegador.'],
+ ['Tarjeta física del acertijo','acertijo','Cada equipo recibe el acertijo de su color. Este ejemplo es del equipo rojo: lean las pistas y descubran el lugar.'],
+ ['Encuentra la tarjeta del problema','problema','Busquen en el pasillo la tarjeta de su color. Lean el problema antes de comenzar las misiones.'],
+ ['Misión 1 · Encuentra tu color','mision1','Resuelvan el acertijo, encuentren la estación de su color y tomen una fotografía para insertarla en Pages.',1],
+ ['Misión 1 · Ejemplo','ejemplo1','Ejemplo rojo: fotografía de la estación. Registren la evidencia del lugar que encontró su propio equipo.'],
+ ['Misión 2 · Mapa de empatía','mision2','Completen el mapa con frases muy cortas: qué piensa y siente, qué oye, qué ve y qué dice y hace.',2],
+ ['Misión 2 · Ejemplo','ejemplo2','Este mapa muestra un ejemplo para la lonchera. Adapten las frases al usuario y al problema de su estación.'],
+ ['Misión 3 · Identifica el problema','mision3','Completen usuario, problema y necesidad. Formen una oración: Los/las… necesitan… porque…',3],
+ ['Misión 3 · Ejemplo','ejemplo3','Ejemplo: los estudiantes necesitan elegir alimentos más equilibrados porque no conocen fácilmente sus características nutricionales.'],
+ ['Misión 4 · Ideas en acción','mision4','Cada integrante escribe una idea en un post-it. Voten y escriban una sola solución útil para el usuario.',4],
+ ['Misión 4 · Ejemplo tecnológico','ejemplo4','Ejemplo: una app que escanea alimentos, muestra información y sugiere alternativas para la lonchera.'],
+ ['Logros y próximas misiones','logros','Revisen sus estrellas. Las misiones 5 y 6 se incorporarán cuando recibamos sus imágenes.']
+];
+function detectiveProgress(){const p=dtRead();return Array.isArray(p.detectiveStars)?p.detectiveStars.filter(n=>Number.isInteger(n)&&n>=1&&n<=4):[];}
+function detectiveStar(n,on){return `<span class="detectiveMedal ${on?'earned':''}" aria-label="Misión ${n}: ${on?'completada':'pendiente'}"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"/><path d="M50 12 61 36 88 39 68 58 73 85 50 72 27 85 32 58 12 39 39 36Z"/></svg><b>${n}</b></span>`;}
+const detectivePreviousRender=dtRender;
+dtRender=function(){
+ document.body.classList.toggle('deck-detectives',dt.session===6&&!dtRoot.hidden);
+ if(dt.session!==6){detectivePreviousRender();return;}
+ const p=dtRead(),teams=dtTeams(),stars=detectiveProgress();
+ const controls=`<div class="classToolbar"><div class="controls"><label>Curso <select id="dtGrade">${[4,5,6,7].map(g=>`<option ${dt.grade===g?'selected':''}>${g}</option>`).join('')}</select></label><label>Paralelo <select id="dtCourse">${(dt.grade===6?['A','B']:['A','B','C']).map(c=>`<option ${dt.course===c?'selected':''}>${c}</option>`).join('')}</select></label><label>Equipo <select id="dtTeam">${(teams.length?teams:Array.from({length:6},(_,i)=>({name:'Equipo '+(i+1)}))).map((t,i)=>`<option value="${i}" ${dt.team===i?'selected':''}>${w5Esc(t.name||'Equipo '+(i+1))}</option>`).join('')}</select></label><label>Fecha <input type="date" data-dtfield="date6" value="${w5Esc(p.date6||'')}"></label><button class="action" data-detectivestatus>${p.detectiveDone?'✓ Completada':'○ Pendiente'}</button></div></div>`;
+ if(dt.step<0){dtRoot.innerHTML=controls+`<section class="hero"><div class="eyebrow">Design Thinking · Sesión 6</div><h1>Detectives de necesidades</h1><p><b>Objetivo:</b> ${dtGoals[5]}</p><p>Seis misiones en equipo · Imágenes e instrucciones hasta la misión 4.</p><button class="action primary" data-deckbegin>🔎 Comenzar aventura</button></section>`;deckEnter();return;}
+ dt.step=Math.max(0,Math.min(dt.step,detectiveSlides.length-1));
+ const [title,asset,desc,mission]=detectiveSlides[dt.step];
+ const medals=`<div class="detectiveMedals">${Array.from({length:6},(_,i)=>detectiveStar(i+1,stars.includes(i+1))).join('')}</div>`;
+ dtRoot.innerHTML=controls+`<section class="card detectiveCard"><div class="detectivePanel"><header><h2>${title}</h2><button class="action" data-detectivegoto="2">⭐ Logros ${stars.length}/6</button></header>${asset?`<figure class="detectiveFigure"><img src="detectives/${asset}.jpeg" alt="${w5Esc(title)}">${asset==='logros'?`<div class="detectiveSheetStars">${stars.map(n=>`<span class="sheetStar sheetStar${n}">${detectiveStar(n,true)}</span>`).join('')}</div>`:''}</figure>`:`<div class="detectiveIntro"><div class="detectiveSteps"><span>🔎<b>1. Lee el acertijo</b></span><span>👣<b>2. Explora en equipo</b></span><span>📷<b>3. Guarda evidencias</b></span><span>⭐<b>4. Cumple las misiones</b></span></div><p>Trabajen con su color y sus roles. Usen Cámara, Pages y Freeform. La docente revisa cada misión antes de entregar la estrella.</p><p><strong>Seis misiones en total.</strong> Esta primera parte llega hasta la misión 4.</p></div>`}<p class="detectiveDescription">${desc}</p><nav class="detectiveNav" aria-label="Imágenes de la sesión 6"><button class="action" data-detectivemove="-1">${dt.step===0?'← Portada':'← Anterior'}</button><label>Ir a <select data-detectivejump aria-label="Seleccionar imagen">${detectiveSlides.map(([t],i)=>`<option value="${i}" ${i===dt.step?'selected':''}>${i+1}. ${t}</option>`).join('')}</select></label>${mission?`<button class="action detectiveValidate" data-detectivevalidate="${mission}" aria-pressed="${stars.includes(mission)}">${stars.includes(mission)?'★ Validada · Quitar estrella':'☆ Validar misión '+mission}</button>`:''}${asset==='logros'?medals:''}<button class="action primary" data-detectivemove="1" ${dt.step===detectiveSlides.length-1?'disabled':''}>Siguiente imagen →</button></nav><span class="detectiveSave" role="status">${w5Esc(teams[dt.team]?.name||'Equipo '+(dt.team+1))} · ${dt.grade}.º ${dt.course} · Guardado local</span></div></section>`;
+ deckEnter();
+};
+const detectivePaginate=deckPaginate;
+deckPaginate=function(){if(dt.session!==6||dtRoot.hidden){detectivePaginate();return;}deckState.pages=[];deckTools.querySelector('#deckMoment').hidden=true;deckTools.querySelector('[data-deckprev]').hidden=true;deckTools.querySelector('[data-decknext]').hidden=true;document.getElementById('deckPage').textContent=dt.step<0?'Portada':`Imagen ${dt.step+1} de ${detectiveSlides.length}`;};
+const detectiveEnter=deckEnter;
+deckEnter=function(){for(const name of ['deckprev','decknext'])deckTools.querySelector(`[data-${name}]`).hidden=false;document.body.classList.toggle('deck-detectives',dt.session===6&&!dtRoot.hidden);detectiveEnter();};
+const detectiveHome=deckShowHome;deckShowHome=function(){document.body.classList.remove('deck-detectives');detectiveHome();};
+dtRoot.addEventListener('click',e=>{if(dt.session!==6)return;const b=e.target.closest('button');if(!b)return;const d=b.dataset;if(d.detectivemove!==undefined){dt.step=Math.min(detectiveSlides.length-1,dt.step+Number(d.detectivemove));dtRender();}if(d.detectivegoto!==undefined){dt.step=Number(d.detectivegoto);dtRender();}if(d.detectivevalidate!==undefined){const n=Number(d.detectivevalidate),stars=detectiveProgress();if(dtSave({detectiveStars:stars.includes(n)?stars.filter(x=>x!==n):[...stars,n]}))dtRender();}if(d.detectivestatus!==undefined){if(dtSave({detectiveDone:!dtRead().detectiveDone}))dtRender();}});
+dtRoot.addEventListener('change',e=>{if(e.target.hasAttribute('data-detectivejump')){dt.step=Number(e.target.value);dtRender();}});
+document.addEventListener('keydown',e=>{if(dtRoot.hidden||dt.session!==6||dt.step<0||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==='ArrowRight'){dt.step=Math.min(detectiveSlides.length-1,dt.step+1);dtRender();}if(e.key==='ArrowLeft'){dt.step=Math.max(-1,dt.step-1);dtRender();}});

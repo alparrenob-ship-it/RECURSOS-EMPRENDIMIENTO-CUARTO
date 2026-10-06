@@ -1,0 +1,20 @@
+@media screen{
+.deck-detectives .deckWeeks{gap:12px}.deck-detectives .classToolbar select,.deck-detectives .classToolbar input{font:inherit;font-size:22px;padding:8px;border:2px solid #d4e5eb;border-radius:10px}
+.deck-detectives .detectiveCard{height:750px!important;padding:14px 20px!important;margin:0!important;border-top:7px solid #079cad}
+.detectivePanel{height:100%;display:grid;grid-template-rows:52px minmax(0,1fr) 64px 64px 20px;gap:8px}
+.detectivePanel>header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.detectivePanel>header h2{font-size:35px;margin:0;line-height:1.1}
+.detectivePanel .action{font-size:23px;padding:10px 16px;min-height:50px;white-space:nowrap}
+.detectiveFigure{position:relative;margin:0;justify-self:center;height:100%;width:fit-content;max-width:100%;min-height:0}
+.detectiveFigure img{display:block;height:100%;width:auto;max-width:100%;object-fit:contain}
+.detectiveDescription{font-size:25px;line-height:1.25;margin:0;align-self:center;color:#17304c;text-align:center}
+.detectiveNav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.detectiveNav label{font-size:22px;display:flex;gap:8px;align-items:center}.detectiveNav select{font:inherit;border:2px solid #d4e5eb;border-radius:12px;background:white;color:#17304c;padding:12px;max-width:420px}
+.detectiveNav .detectiveValidate{background:#e8f8e9;border-color:#49a847;color:#175c2d}
+.detectiveMedals{display:flex;gap:8px}.detectiveMedal{position:relative;display:inline-block;width:42px;height:42px;opacity:.4}.detectiveMedal.earned{opacity:1}.detectiveMedal svg{width:100%;height:100%}.detectiveMedal circle{fill:#eee;stroke:#899aaf;stroke-width:3}.detectiveMedal path{fill:#cdd7dd;stroke:#899aaf;stroke-width:2}.detectiveMedal.earned circle{fill:#e6f7d8;stroke:#498c28}.detectiveMedal.earned path{fill:#57bb35;stroke:#287515}.detectiveMedal b{position:absolute;inset:0;display:grid;place-items:center;font-size:17px;color:#17304c}
+.detectiveSave{font-size:17px;text-align:right;color:#52667c}
+.detectiveSheetStars{position:absolute;inset:0;pointer-events:none}.sheetStar{position:absolute;transform:translate(-50%,-50%)}.sheetStar .detectiveMedal{width:48px;height:48px}.sheetStar1{left:15.4%;top:44.3%}.sheetStar2{left:37.3%;top:44.3%}.sheetStar3{left:59%;top:44.3%}.sheetStar4{left:15.4%;top:80%}
+.detectiveIntro{background:linear-gradient(120deg,#e1f6f7,#fff4cf);border-radius:25px;padding:32px;display:flex;flex-direction:column;justify-content:center}.detectiveIntro p{font-size:32px;line-height:1.4;margin:22px 0 0}.detectiveSteps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.detectiveSteps span{background:white;border-radius:22px;padding:22px;text-align:center;font-size:60px}.detectiveSteps b{display:block;font-size:27px;margin-top:12px}
+.deck-detectives #deckTools #deckMoment{display:none!important}.deck-detectives .hero{margin-top:22px!important;padding:32px!important}.deck-detectives .hero h1{font-size:60px!important}
+.deck-home .deckWeeks:has([data-deckdt="6"]){display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}.deck-home .deckWeeks:has([data-deckdt="6"])>button{padding:15px 25px;min-height:155px;font-size:23px}.deck-home .deckWeeks:has([data-deckdt="6"]) span{display:inline-block;font-size:38px;margin:0 15px 0 0}.deck-home .deckWeeks:has([data-deckdt="6"]) b{display:inline-block;margin:8px 0}
+}
