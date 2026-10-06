@@ -18,3 +18,21 @@
 .deck-detectives #deckTools #deckMoment{display:none!important}.deck-detectives .hero{margin-top:22px!important;padding:32px!important}.deck-detectives .hero h1{font-size:60px!important}
 .deck-home .deckWeeks:has([data-deckdt="6"]){display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}.deck-home .deckWeeks:has([data-deckdt="6"])>button{padding:15px 25px;min-height:155px;font-size:23px}.deck-home .deckWeeks:has([data-deckdt="6"]) span{display:inline-block;font-size:38px;margin:0 15px 0 0}.deck-home .deckWeeks:has([data-deckdt="6"]) b{display:inline-block;margin:8px 0}
 }
+
+/* Imagen grande: la ayuda se abre solo cuando se necesita. */
+@media screen{
+body.deck-detectives .shell{padding:8px 14px}
+.deck-detectives .detectiveCard{height:824px!important;padding:5px 8px!important;border-radius:14px;border-top-width:4px}
+.deck-detectives .detectivePanel{position:relative;grid-template-rows:38px minmax(0,1fr) 48px;gap:4px}
+.deck-detectives .detectivePanel>header h2{font-size:28px}
+.detectiveHeaderButtons{display:flex;gap:8px}.deck-detectives .detectivePanel .action{font-size:21px;padding:6px 12px;min-height:38px}
+.deck-detectives .detectiveFigure{max-width:100%;height:100%;overflow:hidden}
+.deck-detectives .detectiveFigure img{height:100%;width:auto;max-width:100%;object-fit:contain}
+.deck-detectives .detectiveDescription{position:absolute;top:44px;right:12px;max-width:720px;padding:24px;background:#fff;border:3px solid #059aad;border-radius:18px;box-shadow:0 12px 35px #17304c44;font-size:29px;line-height:1.4;z-index:5}
+.deck-detectives .detectiveDescription[hidden]{display:none}
+.deck-detectives .detectiveSave{display:none}
+.deck-detectives .detectiveNav label{font-size:20px}.deck-detectives .detectiveNav select{padding:7px;max-width:430px}
+.deck-detectives #deckTools{bottom:5px;left:14px;right:14px;height:48px;gap:10px}
+.deck-detectives #deckTools button{font-size:18px;padding:8px 12px}.deck-detectives #deckPage{font-size:18px}
+.sheetStar5{left:37.3%;top:80%}.sheetStar6{left:59%;top:80%}
+}
