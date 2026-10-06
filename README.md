@@ -15,3 +15,5 @@ Este repositorio contiene un sitio estático en la raíz. En GitHub, selecciona 
 ## Próximas semanas
 
 El contenido de la semana 4 está en el objeto `lessons` dentro de `index.html`. La navegación y las fichas se ampliarán semana a semana con las planificaciones aprobadas por la docente.
+
+<!-- Solicitud de nueva publicación de la vista ampliada para aula: 2026-10-06. -->
