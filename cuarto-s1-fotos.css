@@ -2,3 +2,5 @@ body.deck-s1photos #weekFive>.card{height:780px!important;padding:18px 24px!impo
 .s1ReasonDetails{margin:0!important}.s1ReasonDetails summary{font-size:20px}.s1RoundCard .s1Photo{min-height:175px}.s1RoundCard .s1Feedback{font-size:17px}.s1RoundHeader p{font-size:21px!important}.s1Panel:has(.s1ReasonDetails[open]){overflow:auto}.s1Panel:has(.s1ReasonDetails[open]) .s1RoundsGrid{min-height:390px}
 
 .s1Panel:has(.s1ScoreTable){gap:10px}.s1ScoreTable{font-size:22px}.s1ScoreTable th,.s1ScoreTable td{padding:8px 10px}.s1ScoreTable small{font-size:16px;line-height:1.2;margin-top:5px}.s1Panel:has(.s1ScoreTable) .s1Saved{font-size:16px}.s1Panel:has(.s1ScoreTable) header p{font-size:21px}
+
+.s1Panel:has(.s1ScoreTable) .s1Nav{justify-content:flex-start}
