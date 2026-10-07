@@ -86,10 +86,10 @@ function aulaUpdateRoutineIdea(){
  w5Root.querySelector('[data-aulacount]').textContent=field.value.length+' / 120';
  const button=w5Root.querySelector('[data-aularoutinenext]');if(!button)return;
  const p=w5Read().aulaRoutine||{},ready=p.answers?.[2]===aulaRoutine[2].correct&&!!field.value.trim();
- button.disabled=!ready;button.classList.toggle('ready',ready);
+ button.disabled=!ready||!!w5.aulaRoutinePending;button.classList.toggle('ready',ready);
  if(ready&&!w5.aulaRoutineCelebrated){
-  w5.aulaRoutineCelebrated=true;button.disabled=true;const notice=w5Root.querySelector('.aulaRoutineComplete');notice.hidden=false;
-  setTimeout(()=>{if(notice.isConnected)notice.hidden=true;if(button.isConnected){const state=w5Read().aulaRoutine||{};button.disabled=!(state.answers?.[2]===aulaRoutine[2].correct&&!!state.ideas?.[2]?.trim());}},1000);
+  w5.aulaRoutineCelebrated=true;w5.aulaRoutinePending=true;button.disabled=true;const notice=w5Root.querySelector('.aulaRoutineComplete');notice.hidden=false;
+  setTimeout(()=>{w5.aulaRoutinePending=false;if(notice.isConnected)notice.hidden=true;if(button.isConnected){const state=w5Read().aulaRoutine||{};button.disabled=!(state.answers?.[2]===aulaRoutine[2].correct&&!!state.ideas?.[2]?.trim());}},1000);
  }
 }
 w5Root.addEventListener('input',e=>{if(aulaEnabled()&&e.target.dataset.aulaidea!==undefined)aulaUpdateRoutineIdea();});
