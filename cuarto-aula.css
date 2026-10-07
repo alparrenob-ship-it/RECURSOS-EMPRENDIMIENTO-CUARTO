@@ -25,3 +25,6 @@
 @media(prefers-reduced-motion:reduce){.deck-aula-routine *{animation:none!important;transition:none!important}}
 
 .aulaQuestionCard{font-size:20px;line-height:1.25;gap:8px}.aulaRoutineFeedback{font-size:19px;line-height:1.25;padding:8px 12px}.aulaRoutineFeedback b{line-height:1.25}.aulaCauseLabel{margin-top:4px}.aulaIdeaCard{font-size:18px;line-height:1.2;padding:8px 12px}.aulaIdeaCard>p{margin:4px 0}.aulaIdeaInput{margin-top:5px}.aulaIdeaMeta{font-size:13px;line-height:1.2}.aulaPanel .aulaIdeaInput textarea{min-height:50px;height:50px;font-size:19px;padding:7px 10px}.deck-aula-routine .aulaPanel{gap:12px}.aulaRoutineTitle h2{font-size:35px}.aulaStepTrack .aulaStep{min-height:60px;padding:8px 18px}
+
+@media screen and (orientation:landscape){body.deck-aula-routine .card{height:780px!important}.deck-aula-routine .aulaPanel{height:750px}}
+.aulaQuestionCard{overflow-y:auto}.aulaRoutineFeedback{font-size:18px;padding:7px 12px}.aulaRoutineFeedback b{font-size:18px}.aulaRoutineFeedback p{font-size:18px;line-height:1.2;margin-top:4px}.aulaCauseLabel{font-size:13px;line-height:1.15}.aulaIdeaCard>p{font-size:16px}.aulaIdeaCard label{font-size:17px}.aulaIdeaMeta{font-size:12px}.aulaPanel .aulaIdeaInput textarea{height:46px;min-height:46px;font-size:18px}
