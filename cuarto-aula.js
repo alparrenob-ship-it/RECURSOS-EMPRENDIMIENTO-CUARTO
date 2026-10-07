@@ -21,7 +21,7 @@ const aulaOldActivity=w5S2Activity;
 w5S2Activity=function(){
  if(!aulaEnabled())return aulaOldActivity();
  const p=w5Read();
- if(w5.step===0)return aulaPanel(`<div class="aulaPhoto"><img src="${aulaImage}" alt="Nuestra aula: mochilas en el paso y papeles en el suelo"><p class="aulaPhotoPrompt">🔎 Observen en silencio. Encuentren tres cosas que podrían mejorar.</p></div>${aulaNav('',`<button class="action primary" data-wstep="1">Compartir lo que pensamos →</button>`)}`);
+ if(w5.step===0)return aulaPanel(`<div class="aulaPhoto aulaZoomPhoto"><img src="${aulaImage}" alt="Nuestra aula: mochilas en el paso y papeles en el suelo"><div class="aulaLens" hidden tabindex="0" role="img" aria-label="Lupa. Usa las flechas del teclado para moverla."></div><p class="aulaPhotoPrompt">🔎 Observen en silencio. Encuentren tres cosas que podrían mejorar.</p></div>${aulaNav('<button class="action" data-aulalupa>🔎 Activar lupa · 2,5×</button>',`<button class="action primary" data-wstep="1">Compartir lo que pensamos →</button>`)}`);
  if(w5.step===1){const state=p.aulaRoutine||{phase:0,answers:{},ideas:{}},phase=Math.min(2,state.phase||0),r=aulaRoutine[phase],answer=state.answers?.[phase],correct=answer===r.correct;return aulaPanel(`<header class="aulaHead"><h2>Veo · Pienso · Me pregunto</h2><div class="aulaTabs">${aulaRoutine.map((x,i)=>`<button class="action ${i===phase?'primary':''}" data-aulaphase="${i}" ${i>phase&&state.answers?.[i-1]!==aulaRoutine[i-1].correct?'disabled':''}>${x.icon} ${x.name}</button>`).join('')}</div></header><div class="aulaRoutine"><img src="${aulaImage}" alt="Aula para observar y fundamentar nuestras ideas"><div><h3>${r.icon} ${r.name}</h3><p>${r.question}</p><div class="aulaChoices">${r.options.map((x,i)=>`<button class="action ${answer===i?'primary':''}" data-aulaanswer="${i}">${x}</button>`).join('')}</div>${answer!==undefined?`<p class="aulaFeedback" role="status">${correct?'✓ Buena elección.':'Revisa la evidencia y prueba otra opción.'} ${correct?r.feedback:''}</p>`:''}<label>La idea de nuestro curso<textarea data-aulaidea="${phase}" placeholder="La docente escribe una frase del curso…">${w5Esc(state.ideas?.[phase]||'')}</textarea></label></div></div>${aulaNav('<button class="action" data-wstep="0">← Volver a observar</button>',phase<2?`<button class="action primary" data-aulaphase="${phase+1}" ${correct?'':'disabled'}>Siguiente mirada →</button>`:`<button class="action primary" data-wstep="2" ${correct?'':'disabled'}>Analizar el caso →</button>`)}`);}
  if(w5.step===2){
   if(w5.item===2)return aulaPanel(`<div class="aulaWorksheet"><img src="actividad-cuarto.jpeg" alt="Ficha grupal: curso, grupo, nombres, roles y cuatro recuadros para pegar deseo, necesidad, problema y oportunidad"><div><h2>¡Trabajamos en equipo!</h2><ol><li>Escriban curso, grupo, nombres y roles.</li><li>Observen las imágenes entregadas.</li><li>Conversen y peguen cada imagen en su categoría.</li><li>Expliquen una elección: «La ubicamos aquí porque…».</li></ol><p class="aulaFeedback">Deseo · Necesidad · Problema · Oportunidad</p><a class="action" href="actividad-cuarto.jpeg" target="_blank" rel="noopener">Abrir hoja para imprimir ↗</a><button class="action primary" data-wstep="3">Ver rúbrica · 10 puntos →</button></div></div>${aulaNav('<button class="action" data-aulacase="1">← Volver al ejemplo</button>','<button class="action primary" data-wstep="3">Compartir y evaluar →</button>')}`);
@@ -32,9 +32,47 @@ w5S2Activity=function(){
  const teams=aulaTeams(),id=teams.some(t=>t.id===w5.team)?w5.team:teams[0].id,team=teams.find(t=>t.id===id),grades=p.aulaRubric?.[id]||[0,0,0,0],total=grades.reduce((n,v)=>n+Number(v),0);
  return aulaPanel(`<header class="aulaHead"><h2>Compartimos y evaluamos · 10 puntos</h2><p>«La necesidad es… El deseo es… El problema es… Aquí hay una oportunidad para…»</p></header><div class="aulaTeamPicker"><button class="action primary" data-aulatable="table">Tabla · Grupos 1 a 5 →</button><label>Equipo <select data-aulateam>${teams.map(t=>`<option value="${t.id}" ${id===t.id?'selected':''}>${w5Esc(t.name)}</option>`).join('')}</select></label><strong style="border-color:${team.color}">${w5Esc(team.name)} · ${total} / 10</strong></div><table class="aulaRubric"><thead><tr><th>Criterio</th><th>Qué observamos</th><th>Puntos</th></tr></thead><tbody>${aulaCriteria.map(([title,max,desc],i)=>`<tr><th>${title}</th><td>${desc}</td><td><select aria-label="${title}" data-aulascore="${i}" data-aulascoreteam="${id}">${Array.from({length:max*2+1},(_,n)=>n/2).map(n=>`<option value="${n}" ${Number(grades[i])===n?'selected':''}>${n}</option>`).join('')}</select> / ${max}</td></tr>`).join('')}</tbody></table><p class="aulaFeedback" role="status">Puntuación guardada para ${w5Esc(team.name)} · 4.º ${w5.course}. La docente asigna los puntos según la evidencia observada.</p>${aulaNav('<button class="action" data-wstep="2">← Actividad grupal</button>','<button class="action" data-deckcover>Volver a la portada</button>')}`);
 };
-w5Root.addEventListener('click',e=>{if(!aulaEnabled())return;const b=e.target.closest('button');if(!b)return;const d=b.dataset,p=w5Read();if(d.aulatable!==undefined){w5.aulaScoreView=d.aulatable;w5Render();}else if(d.aulaphase!==undefined){const s=p.aulaRoutine||{answers:{},ideas:{}};w5Save({aulaRoutine:{...s,phase:Number(d.aulaphase)}});w5Render();}else if(d.aulaanswer!==undefined){const s=p.aulaRoutine||{phase:0,answers:{},ideas:{}};w5Save({aulaRoutine:{...s,answers:{...s.answers,[s.phase||0]:Number(d.aulaanswer)}}});w5Render();}else if(d.aulacase!==undefined){w5.item=Number(d.aulacase);w5Render();}else if(d.aulaconcept!==undefined){const index=Number(d.aulaconcept),current=w5.aulaConceptIndex||0;if(index>current&&p.aulaClassify?.[current]!==aulaConcepts[current][0])return;w5.aulaConceptIndex=index;w5Render();}else if(d.aulaclass!==undefined){w5Save({aulaClassify:{...p.aulaClassify,[d.aulaclass]:d.aulakind}});w5Render();}});
+w5Root.addEventListener('click',e=>{if(!aulaEnabled())return;const b=e.target.closest('button');if(!b)return;const d=b.dataset,p=w5Read();if(d.aulalupa!==undefined){w5.aulaMagnifier=!w5.aulaMagnifier;aulaInitLens();}else if(d.aulatable!==undefined){w5.aulaScoreView=d.aulatable;w5Render();}else if(d.aulaphase!==undefined){const s=p.aulaRoutine||{answers:{},ideas:{}};w5Save({aulaRoutine:{...s,phase:Number(d.aulaphase)}});w5Render();}else if(d.aulaanswer!==undefined){const s=p.aulaRoutine||{phase:0,answers:{},ideas:{}};w5Save({aulaRoutine:{...s,answers:{...s.answers,[s.phase||0]:Number(d.aulaanswer)}}});w5Render();}else if(d.aulacase!==undefined){w5.item=Number(d.aulacase);w5Render();}else if(d.aulaconcept!==undefined){const index=Number(d.aulaconcept),current=w5.aulaConceptIndex||0;if(index>current&&p.aulaClassify?.[current]!==aulaConcepts[current][0])return;w5.aulaConceptIndex=index;w5Render();}else if(d.aulaclass!==undefined){w5Save({aulaClassify:{...p.aulaClassify,[d.aulaclass]:d.aulakind}});w5Render();}});
 w5Root.addEventListener('input',e=>{if(!aulaEnabled()||e.target.dataset.aulaidea===undefined)return;const s=w5Read().aulaRoutine||{phase:0,answers:{}};w5Save({aulaRoutine:{...s,ideas:{...s.ideas,[e.target.dataset.aulaidea]:e.target.value}}});});
 w5Root.addEventListener('change',e=>{if(!aulaEnabled())return;const d=e.target.dataset;if(d.aulateam!==undefined){w5.team=Number(e.target.value);w5Render();}else if(d.aulascore!==undefined){const p=w5Read(),grades=[...(p.aulaRubric?.[d.aulascoreteam]||[0,0,0,0])];grades[Number(d.aulascore)]=Number(e.target.value);w5Save({aulaRubric:{...p.aulaRubric,[d.aulascoreteam]:grades}});w5Render();}});
 const aulaOldPaginate=deckPaginate;
 deckPaginate=function(){document.body.classList.toggle('deck-aula',aulaEnabled()&&!!w5Root.querySelector('.aulaPanel'));if(!document.body.classList.contains('deck-aula')){aulaOldPaginate();return;}deckState.pages=[];document.getElementById('deckPage').textContent=['Observamos','Pensamos','Analizamos','Evaluamos'][w5.step];for(const name of ['deckprev','decknext'])deckTools.querySelector(`[data-${name}]`).hidden=true;};
 const aulaOldEnter=deckEnter;deckEnter=function(){for(const name of ['deckprev','decknext'])deckTools.querySelector(`[data-${name}]`).hidden=false;aulaOldEnter();};
+/* Lupa sobre la imagen completa, respetando el ajuste y la escala de proyección. */
+function aulaPlaceLens(photo,x,y){
+ const img=photo.querySelector('img'),lens=photo.querySelector('.aulaLens');
+ if(!img.naturalWidth)return;
+ const width=photo.clientWidth,height=photo.clientHeight,scale=Math.min(width/img.naturalWidth,height/img.naturalHeight),iw=img.naturalWidth*scale,ih=img.naturalHeight*scale,left=(width-iw)/2,top=(height-ih)/2;
+ x=Math.max(left,Math.min(left+iw,x));y=Math.max(top,Math.min(top+ih,y));
+ photo.aulaLensPoint={x,y};
+ const radius=lens.offsetWidth/2,zoom=2.5;
+ lens.style.left=(x-radius)+'px';lens.style.top=(y-radius)+'px';
+ lens.style.backgroundImage='url("'+img.src+'")';
+ lens.style.backgroundSize=(iw*zoom)+'px '+(ih*zoom)+'px';
+ lens.style.backgroundPosition=(radius-(x-left)*zoom)+'px '+(radius-(y-top)*zoom)+'px';
+}
+function aulaInitLens(){
+ const photo=w5Root.querySelector('.aulaZoomPhoto');if(!photo)return;
+ const lens=photo.querySelector('.aulaLens'),active=!!w5.aulaMagnifier;
+ lens.hidden=!active;photo.classList.toggle('aulaZoomActive',active);
+ const button=w5Root.querySelector('[data-aulalupa]');
+ if(button){button.textContent=active?'🔎 Desactivar lupa':'🔎 Activar lupa · 2,5×';button.setAttribute('aria-pressed',String(active));}
+ if(active){const p=photo.aulaLensPoint||{x:photo.clientWidth/2,y:photo.clientHeight/2};aulaPlaceLens(photo,p.x,p.y);}
+}
+function aulaMoveLens(e){
+ const photo=e.target.closest('.aulaZoomPhoto');
+ if(!photo||!w5.aulaMagnifier)return;
+ const rect=photo.getBoundingClientRect();
+ aulaPlaceLens(photo,(e.clientX-rect.left)*photo.clientWidth/rect.width,(e.clientY-rect.top)*photo.clientHeight/rect.height);
+}
+w5Root.addEventListener('pointermove',aulaMoveLens);
+w5Root.addEventListener('pointerdown',e=>{if(!e.target.closest('.aulaZoomPhoto')||!w5.aulaMagnifier)return;e.preventDefault();e.target.setPointerCapture?.(e.pointerId);aulaMoveLens(e);});
+w5Root.addEventListener('keydown',e=>{
+ const lens=e.target.closest('.aulaLens');if(!lens||!w5.aulaMagnifier)return;
+ const delta={ArrowLeft:[-25,0],ArrowRight:[25,0],ArrowUp:[0,-25],ArrowDown:[0,25]}[e.key];if(!delta)return;
+ e.preventDefault();const photo=lens.parentElement,p=photo.aulaLensPoint;aulaPlaceLens(photo,p.x+delta[0],p.y+delta[1]);
+});
+w5Root.addEventListener('load',e=>{if(e.target.matches?.('.aulaZoomPhoto img'))aulaInitLens();},true);
+window.addEventListener('resize',aulaInitLens);
+const aulaLensPaginate=deckPaginate;
+deckPaginate=function(){aulaLensPaginate();requestAnimationFrame(aulaInitLens);};
