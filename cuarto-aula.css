@@ -28,3 +28,5 @@
 
 @media screen and (orientation:landscape){body.deck-aula-routine .card{height:780px!important}.deck-aula-routine .aulaPanel{height:750px}}
 .aulaQuestionCard{overflow-y:auto}.aulaRoutineFeedback{font-size:18px;padding:7px 12px}.aulaRoutineFeedback b{font-size:18px}.aulaRoutineFeedback p{font-size:18px;line-height:1.2;margin-top:4px}.aulaCauseLabel{font-size:13px;line-height:1.15}.aulaIdeaCard>p{font-size:16px}.aulaIdeaCard label{font-size:17px}.aulaIdeaMeta{font-size:12px}.aulaPanel .aulaIdeaInput textarea{height:46px;min-height:46px;font-size:18px}
+
+.aulaQuestionCard{padding:12px;gap:6px}.aulaAnswerCards{gap:6px}.aulaRoutineFeedback{padding:6px 10px}
