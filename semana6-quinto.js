@@ -67,5 +67,4 @@ q6Root.addEventListener('input',e=>{const d=e.target.dataset;if(d.q6field){if(d.
 if(d.q6score!==undefined){const p=q6Read(),g=+d.group,r=+d.q6score,row=[...(p.scores?.[g]||[0,0,0,0])],n=Math.max(0,Math.min(+d.max,Number(e.target.value)||0));row[r]=n;e.target.value=n;q6Save({scores:{...p.scores,[g]:row}});q6Root.querySelector('[data-q6total="'+g+'"]').textContent=row.reduce((a,b)=>a+(+b||0),0)}
 });
 q6Root.addEventListener('change',e=>{const d=e.target.dataset;if(d.q6team!==undefined){q6.team=+e.target.value;if(q6.session===2&&!q6Work().winner){const prev=q6Read(1).teams?.[q6.team];if(prev?.winner)q6Write({winner:prev.winner})}q6Render()}else if(d.q6course!==undefined){q6.course=e.target.value;q6Render()}else if(d.q6date!==undefined)q6Save({date:e.target.value})});
-const q6Params=new URLSearchParams(location.search);if(q6Params.get('grado')==='5'&&q6Params.get('semana')==='6'){q6.course=['A','B','C'].includes(q6Params.get('curso'))?q6Params.get('curso'):'A';q6Open(Number(q6Params.get('sesion'))===2?2:1)}
-
+window.addEventListener('DOMContentLoaded',()=>{const q6Params=new URLSearchParams(location.search);if(q6Params.get('grado')==='5'&&q6Params.get('semana')==='6'){q6.course=['A','B','C'].includes(q6Params.get('curso'))?q6Params.get('curso'):'A';q6Open(Number(q6Params.get('sesion'))===2?2:1)}});
