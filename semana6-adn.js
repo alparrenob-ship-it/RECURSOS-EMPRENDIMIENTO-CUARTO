@@ -27,7 +27,7 @@ function t6Guide(){return '<details class="t6Guide"><summary>Guía docente · 30
 const t6Categories=[
  {title:'Inteligencia artificial',icon:'✦',color:'#eee4fc',tools:'Claude · ChatGPT',text:'Apoya ideas y análisis. Sus respuestas se revisan.',example:'Proponer ideas para encontrar libros.',photo:'ecosistema'},
  {title:'Diseño · UI / UX',icon:'◈',color:'#fce3ee',tools:'Figma · Freeform',text:'UI: botones y apariencia. UX: que sea fácil de usar.',example:'Un buscador visible y pocos pasos para pedir un libro.',photo:'diseno'},
- {title:'Desarrollo web',icon:'</>',color:'#def2fc',tools:'Frontend + Backend',text:'Frontend: lo que ves. Backend: procesa lo que pides.',example:'Tocas «Prestar»; el sistema comprueba disponibilidad.',photo:'web'},
+ {title:'Desarrollo web',icon:'&lt;/&gt;',color:'#def2fc',tools:'Frontend + Backend',text:'Frontend: lo que ves. Backend: procesa lo que pides.',example:'Tocas «Prestar»; el sistema comprueba disponibilidad.',photo:'web'},
  {title:'Datos y servicios',icon:'▤',color:'#e2f5e8',tools:'Firebase · Supabase',text:'Guardan datos y ofrecen servicios, como acceso de usuarios.',example:'Guardar qué libro está prestado.',photo:'web'},
  {title:'Control de versiones',icon:'⑂',color:'#fff3ca',tools:'Git · GitHub',text:'Conserva cambios del código y facilita colaborar.',example:'Comparar la versión 1 con la versión mejorada.',photo:'ecosistema'}
 ];
