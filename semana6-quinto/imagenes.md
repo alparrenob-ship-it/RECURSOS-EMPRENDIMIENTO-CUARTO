@@ -1,5 +1,11 @@
 # Imágenes de quinto · Semana 6
 
+## digital
+
+Archivo: /workspace/scratch/1b15662fa059/site/semana6-quinto/digital.jpeg
+
+Modo: herramienta integrada. Prompt: photorealistic-natural, fotografía horizontal de un iPad en un pupitre blanco; manos de estudiantes dibujan tres pantallas de una web/app escolar para registrar útiles y encontrarlos: cámara, mapa del aula con ubicación y útil recuperado. Boceto azul/turquesa, luz natural, sin textos, marcas ni logos. Prototipo temprano, no app programada.
+
 Modo: herramienta integrada de generación de imágenes. Fotografías creadas antes de integrarse en la web.
 
 ## reto

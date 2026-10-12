@@ -12,6 +12,7 @@ body.deck-q6 .shell{padding:16px 24px!important;background:#f8fbfc}
 .q6Choices{display:grid;gap:12px}.q6Choices .daButton{text-align:left}
 .q6Ideas{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .q6Ideas .q6Field{padding:12px;border-radius:16px;background:#e7f7f9}
+.deck-q6 .q6Ideas .q6Field{margin:0!important;padding:10px;font-size:20px}.deck-q6 .q6Ideas textarea{height:62px;min-height:54px;padding:7px;font-size:20px}.deck-q6 .daContent>p{font-size:23px;line-height:1.3}
 .q6Ideas .q6Field:nth-child(2){background:#fff4ce}.q6Ideas .q6Field:nth-child(3){background:#fce7ee}.q6Ideas .q6Field:nth-child(4){background:#e7f4e9}
 .q6Steps{display:flex;gap:12px}
 .q6Steps .daButton{min-height:44px;font-size:18px;padding:8px 16px;color:#547081}
