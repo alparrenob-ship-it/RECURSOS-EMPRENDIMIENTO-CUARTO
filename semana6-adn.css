@@ -1,0 +1,68 @@
+/* Sexto y Séptimo semana 6: fotos amplias, tarjetas y controles táctiles. */
+@media screen{
+body.deck-t6 .shell{padding:16px 24px!important;background:#f8fbfc}
+.deck-t6 .top,.deck-t6 #deckTools{display:none!important}
+.deck-t6 .daCard{height:868px;gap:14px}
+.deck-t6 .daMain{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:26px}
+.deck-t6 .daContent{overflow:auto;width:100%;max-height:100%;font-size:24px}
+.deck-t6 .daContent>label{display:inline-flex;gap:10px;align-items:center;margin:5px 12px 12px 0}
+.deck-t6 select,.deck-t6 input,.deck-t6 textarea{font:inherit;font-size:22px;border:2px solid #d3e4e9;border-radius:12px;padding:10px;color:#17304c;background:white;min-height:44px}
+.deck-t6 textarea{width:100%;resize:vertical;min-height:74px}
+.deck-t6 .t6Field{display:flex!important;align-items:stretch!important;flex-direction:column;margin:10px 0!important;font-size:21px}
+.t6Choices{display:grid;gap:12px}.t6Choices .daButton{text-align:left}
+.t6Ideas{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.t6Ideas .t6Field{padding:12px;border-radius:16px;background:#e7f7f9}
+.deck-t6 .t6Ideas .t6Field{margin:0!important;padding:10px;font-size:20px}.deck-t6 .t6Ideas textarea{height:62px;min-height:54px;padding:7px;font-size:20px}.deck-t6 .daContent>p{font-size:23px;line-height:1.3}
+.t6Ideas .t6Field:nth-child(2){background:#fff4ce}.t6Ideas .t6Field:nth-child(3){background:#fce7ee}.t6Ideas .t6Field:nth-child(4){background:#e7f4e9}
+.t6Steps{display:flex;gap:12px}
+.t6Steps .daButton{min-height:44px;font-size:18px;padding:8px 16px;color:#547081}
+.t6Steps [aria-current=step]{background:#dff5f8;border-color:#2aaabd;color:#163e50}
+.t6Below{display:flex;align-items:center;gap:14px;min-height:38px;font-size:17px}
+.t6Below>.daButton{font-size:16px;min-height:44px;padding:5px 10px;margin-left:auto}
+.t6Guide summary,.t6Rubric summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700}
+.t6Guide[open]{position:absolute;bottom:24px;left:34px;max-width:780px;background:white;border:2px solid #c6e3e9;border-radius:20px;padding:16px 22px;z-index:10;box-shadow:0 8px 30px #17304c22}
+.t6Guide p{font-size:21px!important}
+.t6Rubric{margin-top:16px;font-size:19px}
+.t6Table{overflow-x:auto}.t6Table table{width:100%;border-collapse:collapse;min-width:620px}
+.t6Table th,.t6Table td{padding:9px;border:1px solid #d4e6ec;text-align:center;font-size:18px}.t6Table th{background:#eaf7f9}.t6Table input{width:70px;font-size:18px}.t6Table output{font-weight:800}
+.deck-t6 .daContent>.daButton{margin:5px}
+.deck-t6 :focus-visible{outline:4px solid #047ea3;outline-offset:3px}
+.deck-t6 .daBoardCard .daMain{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:20px}
+.deck-t6 .daBoardCard .daContent{overflow:visible}
+.deck-t6 .daPhoto{background:white}
+}
+@media screen and (max-aspect-ratio:1/1),screen and (max-width:1100px){
+body.deck-t6{overflow:auto;background:#f8fbfc}.deck-t6 .shell{position:relative;left:0!important;top:0!important;transform:none;width:100%;height:auto;min-height:100vh;padding:14px!important;overflow:visible}
+.deck-t6 .daCard{height:auto;min-height:calc(100vh - 28px);padding:18px}
+.deck-t6 .daMain{grid-template-columns:1fr;gap:18px}.deck-t6 .daContent{overflow:visible;max-height:none}
+.deck-t6 .daVisual{height:320px}.deck-t6 .daBoardCard .daVisual{height:auto}
+.t6Steps{flex-wrap:wrap;gap:8px}.t6Steps .daButton{font-size:16px}
+.deck-t6 .daCard header h2{font-size:32px}.deck-t6 .daCard header p{font-size:21px}
+.deck-t6 .daCard .daButton{min-height:44px}.t6Below{flex-wrap:wrap}
+.t6Guide[open]{position:static;max-width:100%}.t6Ideas{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){.deck-t6 .daContent{animation:none}}
+
+
+@media screen{
+.t6MapVisual{height:100%;width:100%;display:flex;flex-direction:column;gap:12px;min-height:0}
+.t6MapVisual .daPhoto{flex:1;min-height:150px}
+.t6Map{flex:none;border-top:2px solid #d7edf1;padding-top:8px}
+.t6Map h3{text-align:center;font-size:24px;margin:5px 0 10px;color:#008ba2}
+.t6Map>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.t6Map .daButton{font-size:18px;padding:9px 10px;background:var(--branch);border-color:transparent;min-height:58px}
+.t6Map .daPrimary{border-color:#149faf;box-shadow:0 0 0 2px #149faf}
+.t6Choices,.t6FamilyGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.t6Choices .daButton,.t6FamilyGrid .daButton{font-size:22px;padding:12px;text-align:left}
+.t6Small{font-size:18px!important;line-height:1.3!important;color:#587081}
+.t6Demo{border:1px solid #c6e3eb;border-radius:16px;padding:14px;margin-top:16px}
+.t6Layers{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}.t6Layers .daButton{min-height:44px;font-size:18px;padding:7px 9px}
+.t6MiniWeb{border:1px solid #cbd8df;padding:12px}.t6MiniWeb h4,.t6MiniWeb p{margin:8px 0!important;font-size:21px!important}.t6MiniWeb>span{display:block;font-size:16px;margin-top:10px}
+.t6MiniWeb.styled{background:#e5f8fb;border:2px solid #14abc0;border-radius:16px}.t6MiniWeb.styled h4{color:#00889f}.t6MiniWeb.styled .daButton{border-radius:22px}
+.t6Flow{display:grid;gap:12px;margin:14px 0}.t6Flow label{display:flex;flex-direction:column;gap:6px;background:#eaf8fa;border-radius:14px;padding:12px}.t6Flow b{color:#087f92;font-size:21px}
+.deck-t6 .daContent details summary{min-height:44px;cursor:pointer;font-size:20px}
+}
+@media screen and (max-aspect-ratio:1/1),screen and (max-width:1100px){
+.t6MapVisual{height:auto}.t6MapVisual .daPhoto{height:270px;flex:none}.deck-t6 .daVisual:has(.t6MapVisual){height:auto}.t6Map .daButton{font-size:16px}.t6Map>div{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
