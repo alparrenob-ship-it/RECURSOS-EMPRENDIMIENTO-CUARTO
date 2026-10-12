@@ -43,3 +43,6 @@ body.deck-q6{overflow:auto;background:#f8fbfc}.deck-q6 .shell{position:relative;
 }
 @media(prefers-reduced-motion:reduce){.deck-q6 .daContent{animation:none}}
 
+
+@media screen{body.deck-q6.q6-a4 .shell{height:1131.313px!important;min-height:1131.313px!important}body.q6-a4 .daCard{height:1099px!important}body.q6-a4 .daWheelLabel{font-size:20px!important;width:150px!important;height:34px!important;line-height:34px!important}body.q6-a4 .daLegend{flex-wrap:wrap}body.q6-a4 .daBalloonNumbers span{width:auto;min-width:90px;padding:8px 14px;border-radius:14px}}
+@media print{@page{size:A4 landscape;margin:8mm}body.q6-a4 .shell{width:281mm!important;height:194mm!important;transform:none!important;position:static!important}body.q6-a4 .daCard{height:100%!important}}
