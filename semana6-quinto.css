@@ -1,0 +1,44 @@
+/* Quinto semana 6: fotos amplias, tarjetas y controles táctiles. */
+@media screen{
+body.deck-q6 .shell{padding:16px 24px!important;background:#f8fbfc}
+.deck-q6 .top,.deck-q6 #deckTools{display:none!important}
+.deck-q6 .daCard{height:868px;gap:14px}
+.deck-q6 .daMain{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:26px}
+.deck-q6 .daContent{overflow:auto;width:100%;max-height:100%;font-size:24px}
+.deck-q6 .daContent>label{display:inline-flex;gap:10px;align-items:center;margin:5px 12px 12px 0}
+.deck-q6 select,.deck-q6 input,.deck-q6 textarea{font:inherit;font-size:22px;border:2px solid #d3e4e9;border-radius:12px;padding:10px;color:#17304c;background:white;min-height:44px}
+.deck-q6 textarea{width:100%;resize:vertical;min-height:74px}
+.deck-q6 .q6Field{display:flex!important;align-items:stretch!important;flex-direction:column;margin:10px 0!important;font-size:21px}
+.q6Choices{display:grid;gap:12px}.q6Choices .daButton{text-align:left}
+.q6Ideas{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.q6Ideas .q6Field{padding:12px;border-radius:16px;background:#e7f7f9}
+.q6Ideas .q6Field:nth-child(2){background:#fff4ce}.q6Ideas .q6Field:nth-child(3){background:#fce7ee}.q6Ideas .q6Field:nth-child(4){background:#e7f4e9}
+.q6Steps{display:flex;gap:12px}
+.q6Steps .daButton{min-height:44px;font-size:18px;padding:8px 16px;color:#547081}
+.q6Steps [aria-current=step]{background:#dff5f8;border-color:#2aaabd;color:#163e50}
+.q6Below{display:flex;align-items:center;gap:14px;min-height:38px;font-size:17px}
+.q6Below>.daButton{font-size:16px;min-height:44px;padding:5px 10px;margin-left:auto}
+.q6Guide summary,.q6Rubric summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700}
+.q6Guide[open]{position:absolute;bottom:24px;left:34px;max-width:780px;background:white;border:2px solid #c6e3e9;border-radius:20px;padding:16px 22px;z-index:10;box-shadow:0 8px 30px #17304c22}
+.q6Guide p{font-size:21px!important}
+.q6Rubric{margin-top:16px;font-size:19px}
+.q6Table{overflow-x:auto}.q6Table table{width:100%;border-collapse:collapse;min-width:620px}
+.q6Table th,.q6Table td{padding:9px;border:1px solid #d4e6ec;text-align:center;font-size:18px}.q6Table th{background:#eaf7f9}.q6Table input{width:70px;font-size:18px}.q6Table output{font-weight:800}
+.deck-q6 .daContent>.daButton{margin:5px}
+.deck-q6 :focus-visible{outline:4px solid #047ea3;outline-offset:3px}
+.deck-q6 .daBoardCard .daMain{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:20px}
+.deck-q6 .daBoardCard .daContent{overflow:visible}
+.deck-q6 .daPhoto{background:white}
+}
+@media screen and (max-aspect-ratio:1/1),screen and (max-width:1100px){
+body.deck-q6{overflow:auto;background:#f8fbfc}.deck-q6 .shell{position:relative;left:0!important;top:0!important;transform:none;width:100%;height:auto;min-height:100vh;padding:14px!important;overflow:visible}
+.deck-q6 .daCard{height:auto;min-height:calc(100vh - 28px);padding:18px}
+.deck-q6 .daMain{grid-template-columns:1fr;gap:18px}.deck-q6 .daContent{overflow:visible;max-height:none}
+.deck-q6 .daVisual{height:320px}.deck-q6 .daBoardCard .daVisual{height:auto}
+.q6Steps{flex-wrap:wrap;gap:8px}.q6Steps .daButton{font-size:16px}
+.deck-q6 .daCard header h2{font-size:32px}.deck-q6 .daCard header p{font-size:21px}
+.deck-q6 .daCard .daButton{min-height:44px}.q6Below{flex-wrap:wrap}
+.q6Guide[open]{position:static;max-width:100%}.q6Ideas{grid-template-columns:1fr 1fr}
+}
+@media(prefers-reduced-motion:reduce){.deck-q6 .daContent{animation:none}}
+
