@@ -33,3 +33,17 @@ body.deck-evaluation-u1 .shell>.top,body.deck-evaluation-u1 .gradeNav,body.deck-
 @media(max-width:650px){#evaluationU1 .evEmpathyGame{grid-template-columns:1fr}#evaluationU1 .evEmpathyCards{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){#evaluationU1 .evWheelSpinning{animation:none}}
 #evaluationU1 .evDefinitionChoices{display:grid;gap:10px;margin:16px 0}#evaluationU1 .evDefinitionChoices .evButton{white-space:normal;text-align:left;min-height:55px}
+/* Sexto · seis misiones y video pitch */
+#evaluationU1 .evSixGrid{grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+#evaluationU1 .evSixGrid h3{font-size:18px!important}
+#evaluationU1 .evPitchTimeline{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+#evaluationU1 .evPitchTimeline article{display:flex;flex-direction:column;gap:8px;padding:16px;background:#eef8f9;border-radius:14px;border-top:4px solid #e7b767}
+#evaluationU1 .evPitchTimeline b{font-size:22px;color:#058d9f}
+#evaluationU1 .evPitchTimeline strong{font-size:19px}
+#evaluationU1 .evPitchTimeline span{font-size:16px;line-height:1.4}
+#evaluationU1 .evVideoPanel{padding:18px;background:#f6fafb;border:1px solid #d4e5e9;border-radius:16px;margin:20px 0}
+#evaluationU1 .evVideoPick{display:block;font-weight:700;font-size:16px}
+#evaluationU1 .evVideoPick input{display:block;width:100%;padding:10px 0;margin-top:8px;font-size:14px}
+#evaluationU1 .evVideoPanel video{display:block;max-width:100%;width:100%;max-height:380px;border-radius:12px;background:#163b4f}
+@media(max-width:1100px){#evaluationU1 .evSixGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){#evaluationU1 .evSixGrid{grid-template-columns:repeat(2,minmax(0,1fr))}#evaluationU1 .evPitchTimeline{grid-template-columns:1fr}}
