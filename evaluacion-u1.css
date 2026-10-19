@@ -12,6 +12,24 @@ body.deck-evaluation-u1 .shell>.top,body.deck-evaluation-u1 .gradeNav,body.deck-
 @media(max-width:650px){#evaluationU1{inset:0;border-radius:0;border-width:0;border-top:5px solid #ebae8a;padding:14px;gap:9px}.evHeader{flex-wrap:wrap;gap:10px}.evHeader h1{font-size:22px!important}.evEyebrow{font-size:10px}.evContext{gap:10px;padding:9px;font-size:13px}.evLocal{display:none}.evSplit{grid-template-columns:1fr;gap:18px}.evPhoto{min-height:200px}.evPhoto img{max-height:280px;min-height:200px}.evCover{height:auto}.evCover .evPhoto img{height:250px}.evFooter>span{display:none}.evFooter{font-size:11px;gap:8px}.evFooter .evButton{font-size:11px;padding:7px}.evCourses{grid-template-columns:1fr 1fr;gap:12px}.evCourses>.evButton{min-height:180px;padding:16px}.evParallels{gap:10px}.evParallels .evButton{height:125px;width:100px}.evMissionGrid,.evAchievements{grid-template-columns:repeat(2,1fr);gap:12px}.evMissionGrid>.evButton{min-height:240px}.evRoleGrid{grid-template-columns:1fr 1fr;gap:12px}.evRoleGrid article{padding:15px}.evQuick{grid-template-columns:1fr}.evQuick article{display:flex;align-items:center;gap:15px;padding:10px}.evQuick b{margin:0;font-size:21px}.evLead{font-size:21px}.evMapTitle{display:block}.evDrawingGuide{flex-wrap:wrap}.evIndividual{padding:12px;overflow:auto}.evIndividual table{min-width:650px}.evPitch{grid-template-columns:1fr}.evNotice{left:14px;right:14px;bottom:80px}.evMissionHead h2{font-size:28px!important}}
 @media(prefers-reduced-motion:reduce){#evaluationU1 *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media print{body.deck-evaluation-u1{overflow:visible!important;background:white!important}body.deck-evaluation-u1 .shell{position:static!important;height:auto!important;overflow:visible!important}#evaluationU1{position:static;overflow:visible;display:block;border:0}#evaluationU1 .evMain{overflow:visible}#evaluationU1 .evFooter,#evaluationU1 .evHeader>div:last-child,#evaluationU1 .evActions{display:none}.evTableWrap{overflow:visible}.evRubricTable{min-width:0}.evScore{border:0;width:50px}.evTeacher{display:none}}
-
+/* Los avisos ocupan su propia fila y nunca interceptan la navegación. */
 #evaluationU1 .evNotice{position:static;inset:auto;flex:none;order:4;max-height:90px;overflow:auto;padding:10px 16px;box-shadow:none;font-size:15px}
 #evaluationU1 .evFooter{order:5}
+/* Quinto · empatía, definición e ideación */
+#evaluationU1 .evEmpathyGame{display:grid;grid-template-columns:minmax(180px,220px) 1fr;gap:24px;align-items:center;margin:15px 0}
+#evaluationU1 .evWheelWrap{position:relative;width:200px;height:220px;display:grid;place-items:center;margin:auto}
+#evaluationU1 .evWheelPointer{position:absolute;top:0;left:calc(50% - 10px);z-index:1;color:#174351;font-size:28px}
+#evaluationU1 .evWheel{width:190px;height:190px;border:6px solid #fff;box-shadow:0 0 0 3px #198a98,0 4px 18px #153e4a22;border-radius:50%;background:conic-gradient(#b7dfe8 0 90deg,#f6dd96 90deg 180deg,#d0e9d1 180deg 270deg,#efc7da 270deg);position:relative}
+#evaluationU1 .evWheel span{position:absolute;display:grid;place-items:center;width:70px;height:50px;text-align:center;font-weight:800;font-size:14px;line-height:1.1;color:#173e49}
+#evaluationU1 .evWheel span:nth-child(1){top:25px;right:8px}#evaluationU1 .evWheel span:nth-child(2){bottom:22px;right:8px}#evaluationU1 .evWheel span:nth-child(3){bottom:22px;left:8px}#evaluationU1 .evWheel span:nth-child(4){top:25px;left:8px}
+#evaluationU1 .evWheelSpinning{animation:evEmpathySpin 4.5s cubic-bezier(.15,.65,.2,1) forwards}
+@keyframes evEmpathySpin{from{transform:rotate(0deg)}to{transform:rotate(var(--ev-spin-final))}}
+#evaluationU1 .evEmpathyCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#evaluationU1 .evEmpathyCards article,#evaluationU1 .evDefinition article{padding:14px;background:#eff8f9;border:1px solid #d5e8ea;border-radius:14px}
+#evaluationU1 .evEmpathyCards p,#evaluationU1 .evDefinition p{font-size:16px;margin:8px 0 0}
+#evaluationU1 .evDefinition{display:grid;gap:10px;margin:20px 0}
+#evaluationU1 .evClue{font-size:17px;min-height:80px}
+#evaluationU1 .evIdeasForm{display:grid;gap:9px}
+@media(max-width:650px){#evaluationU1 .evEmpathyGame{grid-template-columns:1fr}#evaluationU1 .evEmpathyCards{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){#evaluationU1 .evWheelSpinning{animation:none}}
+#evaluationU1 .evDefinitionChoices{display:grid;gap:10px;margin:16px 0}#evaluationU1 .evDefinitionChoices .evButton{white-space:normal;text-align:left;min-height:55px}
