@@ -1,0 +1,45 @@
+/* Equipos: mismo formato de tarjetas, con curso y paralelo siempre arriba. */
+body.deck-equipos{overflow:hidden;background:#f4f9fb}
+body.deck-equipos .shell{position:static!important;transform:none!important;width:100%!important;height:100dvh!important;max-width:none!important;padding:0!important;margin:0!important;left:0!important;top:0!important}
+body.deck-equipos .shell>:not(#equiposPortal){display:none!important}
+#equiposPortal[hidden]{display:none!important}
+#equiposPortal{position:fixed;inset:10px;z-index:50;display:flex;flex-direction:column;gap:15px;background:linear-gradient(140deg,#fff,#f2fbfc);border:1px solid #d8e8ed;border-top:7px solid #f09c5b;border-radius:25px;padding:24px 30px 15px;overflow:hidden;color:#17304c;font:17px/1.45 system-ui,-apple-system,sans-serif}
+#equiposPortal *{box-sizing:border-box}
+.epHeader{display:flex;align-items:center;justify-content:space-between;gap:18px;flex:none}
+.epHeader small{font-size:12px;font-weight:850;letter-spacing:.08em;color:#087c96}.epHeader h1{font-size:36px;line-height:1.1;margin:5px 0}.epHeader>div:last-child{display:flex;gap:9px;flex-wrap:wrap}
+#equiposPortal .epButton{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:750 15px/1.3 system-ui;color:#17304c;min-height:44px;border:1px solid #bcd6df;border-radius:12px;padding:10px 14px;background:#fff;cursor:pointer;text-decoration:none}
+#equiposPortal .epButton:hover{background:#eef9fb;border-color:#0e9bb2}#equiposPortal .epButton:disabled{opacity:.45;cursor:default}
+#equiposPortal button:focus-visible,#equiposPortal input:focus-visible,#equiposPortal select:focus-visible,#equiposPortal textarea:focus-visible,#equiposPortal summary:focus-visible{outline:3px solid #e1a424;outline-offset:3px}
+.epContext{display:flex;flex-wrap:wrap;gap:18px;align-items:center;padding:13px 17px;border-radius:15px;background:#eaf5f7;flex:none}.epContext label,.epTools>label{display:flex;gap:10px;align-items:center;font-weight:750}.epContext span{margin-left:auto;color:#527087;font-size:15px}
+#equiposPortal select,#equiposPortal input,#equiposPortal textarea{font:inherit;color:#17304c;background:#fff;border:1px solid #bbd4dd;border-radius:10px;padding:8px;max-width:100%}
+.epMain{overflow:auto;flex:1;min-height:0;padding:0 4px 24px;scrollbar-gutter:stable}
+.epWelcome h2{font-size:clamp(29px,3vw,47px);line-height:1.15;margin:20px 0 12px}.epWelcome p{font-size:19px;margin:10px 0 22px}
+.epCourses{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin:36px 0}
+.epCourses button{background:white;color:#17304c;border:1px solid #d8e7ec;border-top:8px solid var(--team);border-radius:24px;padding:28px;text-align:left;min-height:230px;box-shadow:0 12px 28px #17304c0c;cursor:pointer}
+.epCourses span{font-size:46px}.epCourses b{display:block;font-size:30px;margin:14px 0}.epCourses small{color:#088fa6;font-size:17px;font-weight:750}
+.epTools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:15px;background:#fff;border:1px solid #d8e7ec;border-radius:16px}
+.epStatus{font-size:15px;min-height:22px;margin:12px 3px;color:#0a715b;font-weight:650}
+.epFile{position:relative;overflow:hidden}.epFile input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.epLoader{background:#fff;border:1px dashed #78c5d6;border-radius:16px;padding:15px 20px}.epLoader summary{cursor:pointer;font-weight:800;min-height:30px}.epLoader p{font-size:16px}.epLoader>label:not(.epFile){display:block;margin:16px 0 10px;font-weight:750}.epLoader textarea{display:block;width:100%;margin-top:8px}.epLoader small{display:block;margin-top:14px;color:#526b7f}
+.epParticipants{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:16px}.epParticipants label{display:flex;align-items:center;gap:10px}.epParticipants input{width:18px;height:18px;accent-color:#0b90a5}
+#equiposPortal .teamsGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:20px}
+#equiposPortal .teamCard{background:#fff;border:3px solid var(--team);border-radius:21px;padding:19px;min-width:0;box-shadow:none}
+#equiposPortal .teamCard h3{font-size:21px;margin:0 0 18px;line-height:1.2}#equiposPortal .teamCard p{font-size:16px;line-height:1.5;margin:14px 0}
+#equiposPortal .teamCard>label{display:block;font-weight:750;font-size:16px;margin:12px 0 4px}#equiposPortal .teamCard input{display:block;width:100%;margin-top:5px;font-size:16px}
+#equiposPortal .memberRow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:center;padding:13px 0;border-top:1px solid #e0eaef}
+#equiposPortal .memberRow b{font-size:17px;overflow-wrap:anywhere}#equiposPortal .memberRow span{font-size:16px;overflow-wrap:anywhere}#equiposPortal .memberRow select{width:100%;font-size:15px;margin:3px 0;min-height:38px}
+#equiposPortal .teamBadge{background:#fff4d8;color:#796327;border-radius:13px;padding:12px;font-size:14px;font-weight:800;text-align:center;margin-top:17px}
+#equiposPortal .teamBadge.earned{background:#e0f5e6;color:#196e42}.epEmpty{padding:30px;border:2px dashed #a8d4df;border-radius:20px;background:#fff;margin:25px 0;max-width:1000px}.epMuted{color:#6e8494}
+.epFooter{font-size:12px;color:#637c8d;border-top:1px solid #dfebee;padding-top:10px;flex:none}
+/* La novena carpeta completa una tercera fila sin recortar el inicio. */
+.deck-home:has([data-equipos-open]) .deckCourseGrid{gap:14px!important;margin:14px 35px!important}
+.deck-home:has([data-equipos-open]) .deckCourseGrid button{min-height:145px!important;padding:14px 20px!important}
+.deck-home:has([data-equipos-open]) .deckCourseGrid span{font-size:32px!important}
+.deck-home:has([data-equipos-open]) .deckCourseGrid b{font-size:24px!important;margin:6px 0!important}
+.deck-home:has([data-equipos-open]) .deckCourseGrid small{font-size:17px!important}
+.deck-home:has([data-equipos-open]) .deckWelcome h1{font-size:55px!important}
+.deck-home:has([data-equipos-open]) .deckWelcome p{margin:10px 0!important}
+.deck-home:has([data-equipos-open]) .deckHomeFooter{margin:14px 35px!important}
+@media(max-width:1050px){#equiposPortal{inset:6px;padding:17px}.epCourses{grid-template-columns:repeat(2,1fr)}#equiposPortal .teamsGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.epTools .epButton{font-size:14px!important}}
+@media(max-width:650px){#equiposPortal{inset:0;border-radius:0;padding:13px}.epHeader{align-items:flex-start;flex-wrap:wrap}.epHeader h1{font-size:30px}.epHeader .epButton{font-size:12px!important;padding:9px!important}.epContext{gap:10px}.epContext span{margin-left:0;width:100%}#equiposPortal .teamsGrid{grid-template-columns:1fr}.epCourses{gap:13px}.epCourses button{padding:18px;min-height:180px}.epCourses b{font-size:25px}.epFooter{font-size:10px}.epWelcome h2{font-size:30px}}
+@media print{body.deck-equipos .shell{display:none!important}}

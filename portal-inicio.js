@@ -28,7 +28,7 @@ function zoom(button){
  const animation=layer.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:'translate('+dx+'px,'+dy+'px) scale('+scale+')',opacity:.95,offset:.7},{transform:'translate('+dx+'px,'+dy+'px) scale('+scale+')',opacity:0}],{duration:560,easing:'cubic-bezier(.22,.7,.2,1)',fill:'forwards'});
  animation.finished.catch(()=>{}).finally(()=>{layer.remove();if(activeLayer===layer)activeLayer=null});
 }
-const entries='[data-deckcourse],[data-deckweek],[data-deckdt],[data-odsopen],[data-ev-open],[data-ev-grade],[data-ev-parallel],[data-w8-open],[data-portal-project]';
+const entries='[data-deckcourse],[data-deckweek],[data-deckdt],[data-odsopen],[data-ev-open],[data-ev-grade],[data-ev-parallel],[data-w8-open],[data-portal-project],[data-equipos-open],[data-ep="course"]';
 window.addEventListener('click',event=>{
  const button=event.target.closest(entries);
  if(!button||button.disabled)return;
