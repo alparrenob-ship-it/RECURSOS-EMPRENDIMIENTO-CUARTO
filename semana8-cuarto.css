@@ -61,3 +61,88 @@ body.deck-week8 .shell> :not(#weekEight){display:none!important}
 .w8OptionalTimer[open]>div{position:absolute;bottom:50px;left:0;z-index:10;background:#fff;border:1px solid #bdd5dc;box-shadow:0 8px 25px #173e4d33;border-radius:15px;padding:16px;width:330px}
 #weekEight.w8Large .w8Choice{font-size:23px!important;min-height:82px!important}
 @media(max-width:750px){#weekEight.w8IsChallenge .w8ChallengeSplit{grid-template-columns:1fr}#weekEight.w8IsChallenge .w8Scene>.w8Photo{height:250px}#weekEight.w8IsChallenge .w8ChallengeFooter{display:block}.w8OptionalTimer[open]>div{left:0;width:min(330px,80vw)}}
+
+/* Diapositivas de proyección: misma composición en pantalla e iPad. */
+#weekEight{inset:auto!important;width:1600px!important;height:900px!important;transform:scale(var(--w8scale,1));transform-origin:top left;padding:20px 30px 12px!important;gap:12px!important;border-radius:24px!important;--w8type:26px}
+#weekEight h1{font-size:30px!important}#weekEight .w8Eyebrow{font-size:13px!important}
+#weekEight .w8Header{flex-wrap:nowrap!important;min-height:58px;align-items:center!important}
+#weekEight .w8TopButtons .w8Button{font-size:19px!important}
+#weekEight .w8Phases{display:flex!important;flex-wrap:nowrap!important;gap:12px!important}
+#weekEight .w8Phases .w8Button{font-size:19px!important;flex:1!important;min-height:50px!important}
+#weekEight .w8Phases .w8Button:last-child{flex:0 0 130px!important}
+#weekEight .w8Main{display:flex;flex-direction:column;overflow:hidden;padding:4px 0 0!important;scrollbar-gutter:auto}
+#weekEight .w8Slide{display:flex;flex-direction:column;flex:1;min-height:0;gap:16px}
+#weekEight .w8Slide>.w8Intro{margin:0!important;flex:none}
+#weekEight h2{font-size:44px!important;margin:6px 0 10px!important}
+#weekEight .w8Slide>.w8Intro p{font-size:25px!important;line-height:1.35}
+#weekEight .w8Slide>.w8Actions{margin:0!important;flex:none;min-height:50px}
+#weekEight .w8Button{font-size:20px!important;min-height:48px;padding:11px 17px!important}
+#weekEight .w8Footer{height:32px;min-height:32px;flex:none}
+#weekEight .w8Footer>span,#weekEight .w8Footer>small{display:block!important}
+#weekEight .w8Footer label{font-size:13px}
+#weekEight .w8Notice{padding:8px 14px!important;max-height:40px;font-size:16px}
+#weekEight .w8Context{flex-wrap:nowrap!important;min-height:72px;padding:10px 14px!important}
+#weekEight .w8ContextActions{margin-left:auto!important}
+#weekEight .w8ContextActions .w8Button{font-size:17px!important}
+#weekEight.w8IsCover .w8Cover{flex:1;min-height:0!important;margin:0!important;grid-template-columns:1.05fr 1fr!important;gap:36px;align-items:center}
+#weekEight.w8IsCover .w8Cover h2{font-size:58px!important}
+#weekEight.w8IsCover .w8Cover .w8Intro{margin-bottom:18px}
+#weekEight.w8IsCover .w8Cover .w8Intro p{font-size:28px!important}
+#weekEight.w8IsCover .w8Cover .w8Lead{font-size:25px!important}
+#weekEight.w8IsCover .w8Cover .w8Photo{height:440px!important}
+#weekEight .w8Pills{margin:20px 0}
+#weekEight .w8Small{font-size:17px!important}
+#weekEight .w8WarmScene{display:flex;gap:65px;align-items:center;justify-content:center;flex:1;background:linear-gradient(120deg,#fff8e5,#eaf8f8);border-radius:25px;padding:40px;min-height:0}
+#weekEight .w8WarmScene h3{font-size:57px!important;margin:16px 0}
+#weekEight .w8WarmScene p{font-size:30px}
+#weekEight .w8WarmIcon{font-size:180px;line-height:1.2}
+#weekEight .w8Questions{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;flex:1;min-height:0}
+#weekEight .w8Questions article{border:2px solid #dce9e9;border-radius:24px;background:#f4fafb;padding:28px;display:flex;flex-direction:column;justify-content:center}
+#weekEight .w8Questions article>span{font-size:65px}
+#weekEight .w8Questions h3{font-size:31px!important;line-height:1.3}
+#weekEight .w8Questions p{font-size:26px}
+#weekEight .w8ConceptMap{display:flex;flex-direction:column;flex:1;gap:30px;min-height:0;justify-content:center}
+#weekEight .w8MapCenter{align-self:center;text-align:center;background:#fff4d3;border:2px solid #ebc964;padding:16px 35px;border-radius:24px;position:relative;min-width:490px}
+#weekEight .w8MapCenter:after{content:'↓';position:absolute;bottom:-39px;left:calc(50% - 14px);font-size:38px;color:#138395}
+#weekEight .w8MapCenter>span{font-size:45px;float:left;margin-right:25px}
+#weekEight .w8MapCenter h3{font-size:30px!important;margin:0!important}
+#weekEight .w8MapCenter p{font-size:22px;margin:7px 0!important}
+#weekEight .w8MapBranches{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+#weekEight .w8MapBranches article{border:2px solid #bfe2e8;background:#f0f9fa;padding:18px 24px;border-radius:22px;text-align:center}
+#weekEight .w8MapBranches span{display:block;font-size:44px}
+#weekEight .w8MapBranches b{font-size:26px}#weekEight .w8MapBranches p{font-size:24px;line-height:1.35;margin:10px 0 0}
+#weekEight .w8KeyIdea{padding:16px 22px;border-radius:16px;background:#fff5d7;font-size:25px!important;text-align:center;margin:0!important}
+#weekEight .w8LearningSplit{display:grid;grid-template-columns:1fr 1fr;gap:28px;flex:1;min-height:0}
+#weekEight .w8LearningSplit>.w8Photo{min-height:0!important;height:100%!important}
+#weekEight .w8Routine{display:grid;grid-template-rows:repeat(3,1fr);gap:16px;min-height:0}
+#weekEight .w8Routine article{border-radius:18px;border:2px solid #cce4e7;background:#f3f9fa;padding:18px 24px;display:flex;flex-direction:column;justify-content:center}
+#weekEight .w8Routine b{font-size:26px}#weekEight .w8Routine p{font-size:26px;line-height:1.25;margin:8px 0 0!important}
+#weekEight .w8GroupBar{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:12px!important;overflow:visible!important;padding:0!important;margin:0!important;flex:none;height:94px}
+#weekEight .w8Group{width:auto!important;min-width:0!important;max-width:none!important;min-height:0!important;padding:10px 14px!important;gap:5px}
+#weekEight .w8Group b{font-size:21px}#weekEight .w8Group span{font-size:18px}#weekEight .w8Group small{font-size:12px}
+#weekEight .w8ConsolidationHead{display:flex;align-items:center;gap:18px;flex:none}
+#weekEight .w8ConsolidationHead .w8Intro{margin:0!important;flex:1}
+#weekEight .w8ConsolidationHead h2{font-size:35px!important;margin:3px 0!important}
+#weekEight .w8ConsolidationHead p{font-size:20px!important;margin:0!important}
+#weekEight .w8PuzzleCount{font-size:22px;font-weight:800;color:#087f8d}
+#weekEight .w8PuzzleArea{display:grid;grid-template-columns:510px 1fr;gap:28px;flex:1;min-height:0;align-items:stretch}
+#weekEight .w8LetterGrid{width:auto!important;min-height:0!important;height:100%;grid-template-columns:repeat(8,46px)!important;grid-template-rows:repeat(8,46px);gap:4px!important;padding:8px!important}
+#weekEight .w8Letter{width:46px!important;height:46px!important;font-size:26px!important;border-radius:9px}
+#weekEight .w8PuzzleTask{display:flex;flex-direction:column;gap:10px;min-height:0}
+#weekEight .w8WordList{margin:0!important;gap:10px;flex:none}
+#weekEight .w8WordList .w8Button{font-size:24px!important;padding:9px 16px!important}
+#weekEight .w8PuzzleRule{font-size:20px!important;margin:0!important}
+#weekEight .w8PuzzleHelp{display:flex;gap:10px}
+#weekEight .w8PuzzleHelp .w8Button{font-size:17px!important;min-height:42px}
+#weekEight .w8TurnCard{background:#f1f8f9;padding:14px 18px;border-radius:18px}
+#weekEight .w8TurnCard>b{font-size:22px;color:#097c8c}
+#weekEight .w8TurnCard>p{font-size:22px;line-height:1.25;margin:9px 0!important}
+#weekEight .w8Participation{margin:0!important;padding-top:10px!important;gap:8px}
+#weekEight .w8Participation label{flex-wrap:nowrap!important;font-size:16px}
+#weekEight .w8Participation .w8Button{font-size:16px!important;min-height:42px;padding:8px 12px!important}
+#weekEight .w8Participation select{font-size:16px!important;min-height:40px;max-width:240px}
+#weekEight .w8Participation small{display:block!important;font-size:13px}
+#weekEight .w8Check{font-size:18px;line-height:1.25;margin:0!important;align-items:center}
+#weekEight.w8TeacherView .w8Main{display:block;overflow:auto}
+#weekEight.w8TeacherView .w8ResourceGrid{grid-template-columns:repeat(3,1fr)!important}
+#weekEight.w8TeacherView .w8RubricLayout{grid-template-columns:1fr 1fr!important}
