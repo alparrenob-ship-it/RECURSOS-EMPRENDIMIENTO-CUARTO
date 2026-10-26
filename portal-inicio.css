@@ -1,0 +1,4 @@
+/* Inicio con ocho carpetas y transiciones de entrada. */
+.portalZoomLayer{position:fixed;z-index:2147483646;pointer-events:none;display:flex;flex-direction:column;justify-content:center;gap:8px;overflow:hidden;background:#fff;border:2px solid #dce9ee;border-top:7px solid var(--portal-accent,#008fa5);border-radius:20px;padding:24px;color:#17304c;box-shadow:0 18px 60px #17304c24;transform-origin:center;will-change:transform,opacity}
+.portalZoomLayer span{font-size:34px}.portalZoomLayer b{font-size:24px}
+@media(prefers-reduced-motion:reduce){.deckCourseGrid button{transition:none!important}.deckCourseGrid button:hover{transform:none!important}}
