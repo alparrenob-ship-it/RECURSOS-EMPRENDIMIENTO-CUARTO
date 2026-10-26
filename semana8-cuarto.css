@@ -152,3 +152,14 @@ body.deck-week8 .shell> :not(#weekEight){display:none!important}
 #weekEight .w8LetterGrid{grid-template-columns:repeat(8,44px)!important;grid-template-rows:repeat(8,44px);align-content:center}
 #weekEight .w8Letter{width:44px!important;height:44px!important}
 #weekEight .w8DialogText{max-width:1000px;margin:12px auto!important;font-size:20px!important}
+
+/* Cinco intervenciones del tema El usuario, independientes del número de integrantes. */
+#weekEight .w8UserTurns{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+#weekEight .w8UserTurns .w8Button{font-size:14px!important;padding:7px 5px!important;min-height:39px;white-space:nowrap}
+#weekEight .w8TurnCard{padding:10px 16px}
+#weekEight .w8TurnCard>p{font-size:23px;margin:6px 0!important;line-height:1.2}
+#weekEight .w8TurnCard .w8UserClue{font-size:16px!important;color:#526c78;line-height:1.2;margin:5px 0!important}
+#weekEight .w8PuzzleTask{gap:8px}
+#weekEight .w8PuzzleHelp .w8Button{min-height:38px;padding:7px 12px!important}
+#weekEight .w8Participation{padding-top:7px!important}
+#weekEight .w8ConsolidationHead h2{font-size:34px!important}
