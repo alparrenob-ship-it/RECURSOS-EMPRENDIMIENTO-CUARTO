@@ -35,3 +35,29 @@ body.deck-week8 .shell> :not(#weekEight){display:none!important}
 @media(max-width:750px),(max-aspect-ratio:4/5){#weekEight{inset:0;border-radius:0;border:0;border-top:5px solid #e7c459;padding:13px;gap:9px;--w8type:19px}.w8Header{flex-wrap:wrap;gap:9px}.w8Header h1{font-size:24px!important}.w8Eyebrow{font-size:10px}.w8Context{gap:8px;font-size:13px;padding:8px}.w8ContextActions{display:flex;flex-wrap:wrap}.w8ProjectTag{max-width:none;flex:1}.w8ContextActions .w8Button{font-size:12px!important}.w8Phases{gap:6px}.w8Phases .w8Button{font-size:12px!important;padding:8px!important;flex:1 1 42%}.w8Phases .w8Button:last-child{flex:1 1 42%}.w8Cover,.w8Split{grid-template-columns:1fr;min-height:0;gap:18px}.w8Cover h2{font-size:40px!important}.w8Cover .w8Photo{height:270px}.w8Cover .w8Intro p{font-size:21px!important}.w8GroupBar{display:flex;overflow-x:auto;gap:9px;padding:3px 2px 10px}.w8Group{min-width:150px;max-width:170px;min-height:95px;flex:1}.w8Group span{font-size:14px}.w8Intro h2{font-size:32px!important}.w8Intro p{font-size:19px!important}.w8Split>.w8Photo,.w8Scene>.w8Photo{height:270px}.w8ChallengeTitle{display:block}.w8ChallengeTitle>.w8Button{margin-bottom:14px}.w8Footer>span,.w8Footer>small{display:none}.w8Footer{justify-content:space-between}.w8LetterGrid{grid-template-columns:repeat(8,minmax(30px,44px));gap:3px;width:100%;padding:8px}.w8Letter{width:100%;height:44px;font-size:20px}.w8Choice{font-size:20px!important;min-height:75px!important}.w8ChoiceIcon{font-size:32px}.w8MarkRow{display:block}.w8ScoreLabel{margin-top:12px;max-width:160px}.w8GradePanel{padding:16px}.w8Members{font-size:12px}.w8Members output{font-size:14px}.w8Summary{overflow:auto}.w8Summary table{min-width:600px}.w8KnowWant b{font-size:21px}.w8TurnSteps .w8Button{font-size:13px!important}.w8Participation label{flex-wrap:wrap}.w8Task{padding:18px}}
 @media(prefers-reduced-motion:reduce){#weekEight *{transition:none!important;animation:none!important}}
 @media print{body.deck-week8 .shell{display:none!important}}
+/* Durante el reto se muestra una consigna completa por pantalla. */
+#weekEight.w8IsChallenge .w8Phases,#weekEight.w8IsChallenge .w8GroupBar{display:none}
+#weekEight.w8IsChallenge .w8Header .w8Eyebrow{font-size:10px}
+#weekEight.w8IsChallenge .w8Header h1{font-size:25px}
+#weekEight.w8IsChallenge .w8ChallengeTitle .w8Intro{margin-bottom:10px}
+#weekEight.w8IsChallenge .w8ChallengeTitle h2{margin:5px 0 8px!important}
+#weekEight.w8IsChallenge .w8ChallengeTitle p{font-size:18px}
+#weekEight.w8IsChallenge .w8TurnSteps{margin-bottom:12px}
+#weekEight.w8IsChallenge .w8ChallengeSplit{min-height:0;align-items:start}
+#weekEight.w8IsChallenge .w8Scene>.w8Photo{height:290px;min-height:230px}
+#weekEight.w8IsChallenge .w8ChallengeSplit>.w8Task{padding:18px}
+#weekEight.w8IsChallenge .w8Choices{gap:10px}
+#weekEight.w8IsChallenge .w8Choice{min-height:66px!important;font-size:20px!important;padding:10px 14px!important}
+#weekEight.w8IsChallenge .w8ChoiceIcon{font-size:32px}
+#weekEight.w8IsChallenge .w8Feedback{font-size:16px!important;padding:10px 13px;margin:10px 0}
+#weekEight.w8IsChallenge .w8Alternative{margin:6px 0 0;padding-top:0}
+#weekEight.w8IsChallenge .w8Participation{margin-top:8px;padding-top:8px;gap:8px}
+#weekEight.w8IsChallenge .w8Participation small{display:none}
+#weekEight.w8IsChallenge .w8Participation select{max-width:205px}
+#weekEight.w8IsChallenge .w8ChallengeFooter{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:14px}
+#weekEight.w8IsChallenge .w8ChallengeFooter .w8Actions{flex:1;margin:0}
+.w8OptionalTimer{position:relative;flex:none}
+.w8OptionalTimer>summary{font-size:14px;font-weight:700;cursor:pointer;min-height:44px;display:flex;align-items:center;color:#446674}
+.w8OptionalTimer[open]>div{position:absolute;bottom:50px;left:0;z-index:10;background:#fff;border:1px solid #bdd5dc;box-shadow:0 8px 25px #173e4d33;border-radius:15px;padding:16px;width:330px}
+#weekEight.w8Large .w8Choice{font-size:23px!important;min-height:82px!important}
+@media(max-width:750px){#weekEight.w8IsChallenge .w8ChallengeSplit{grid-template-columns:1fr}#weekEight.w8IsChallenge .w8Scene>.w8Photo{height:250px}#weekEight.w8IsChallenge .w8ChallengeFooter{display:block}.w8OptionalTimer[open]>div{left:0;width:min(330px,80vw)}}
