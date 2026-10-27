@@ -1,0 +1,81 @@
+/* Menús de inicio y semanas: se ajustan a la ventana; las clases conservan 16:9. */
+@media screen{
+body.deck-enabled:has(#deckHome.portalNavigation:not([hidden])){background:#f5f9fa;overflow:hidden}
+body.deck-enabled:has(#deckHome.portalNavigation:not([hidden])) .shell{width:100vw;height:100dvh;max-width:none;padding:clamp(16px,2.5vw,38px);left:0!important;top:0!important;transform:none!important;background:radial-gradient(ellipse at 100% 0%,#d4f2f3,transparent 55%),radial-gradient(ellipse at 0% 100%,#fff0ce,transparent 55%),#f9fcfd}
+#deckHome.portalNavigation:not([hidden]){height:100%;display:flex;flex-direction:column;gap:clamp(14px,2vh,22px);max-width:1520px;margin:auto;min-height:0}
+#deckHome.portalNavigation .deckWelcome{padding:0!important;flex:0 0 auto;position:relative}
+#deckHome.portalNavigation .deckWelcome .eyebrow{font-size:12px;letter-spacing:.12em;margin-bottom:8px}
+#deckHome.portalNavigation .deckWelcome h1{font-size:clamp(32px,3.8vw,54px)!important;line-height:1.08;letter-spacing:-1.5px;margin:8px 0!important}
+#deckHome.portalNavigation .deckWelcome h1 br{display:none}
+#deckHome.portalNavigation .deckWelcome h1 em:before{content:' '}
+#deckHome.portalNavigation .deckWelcome p{font-size:clamp(15px,1.5vw,20px)!important;line-height:1.4;margin:10px 0 0!important;color:#52667c}
+#deckHome.portalNavigation .deckWelcome [data-deckback]{float:right;min-height:44px;font-size:15px;padding:10px 16px;border:1px solid #cedfe5;border-radius:14px;background:white;margin-left:20px}
+#deckHome.portalNavigation .deckCourseGrid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-template-rows:repeat(3,minmax(0,1fr));gap:14px!important;margin:0!important;flex:1;min-height:0}
+#deckHome.portalNavigation .deckCourseGrid>button{min-width:0;min-height:0!important;position:relative;padding:20px 128px 20px 22px!important;display:flex;flex-direction:column;justify-content:center;border:1px solid #dce7eb;border-top:5px solid var(--accent);border-radius:22px;background:#fff;box-shadow:0 6px 18px #17304c07;transition:transform .18s,box-shadow .18s}
+#deckHome.portalNavigation .deckCourseGrid>button:hover{transform:translateY(-3px);box-shadow:0 12px 24px #17304c12}
+#deckHome.portalNavigation .deckCourseGrid>button>span{position:absolute;right:22px;bottom:24px;font-size:44px!important;line-height:1}
+#deckHome.portalNavigation .deckCourseGrid>button>span.odsHomeRing{right:30px;bottom:28px;width:52px!important;height:52px;font-size:17px!important}
+#deckHome.portalNavigation .deckCourseGrid .portalRealCourseIcon{width:88px;height:88px}
+#deckHome.portalNavigation .deckCourseGrid b{font-size:clamp(20px,1.7vw,27px)!important;line-height:1.15;margin:0 0 9px!important;overflow-wrap:break-word}
+#deckHome.portalNavigation .deckCourseGrid small{font-size:clamp(13px,1.05vw,16px)!important;line-height:1.35;height:auto!important;color:#607184}
+#deckHome.portalNavigation .deckCourseGrid strong{position:static!important;font-size:14px!important;margin-top:13px!important;color:#087d91}
+#deckHome.portalNavigation .deckHomeFooter{margin:0!important;display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:14px;flex:0 0 auto}
+#deckHome.portalNavigation .deckHomeFooter button{font-size:14px;min-height:44px;padding:10px 15px}
+#deckHome.portalNavigation .deckWeeks{display:grid!important;grid-template-columns:repeat(var(--portal-columns,4),minmax(0,1fr));gap:18px!important;margin:0!important;flex:1;min-height:0;align-items:stretch;padding:10px 0 16px}
+#deckHome.portalNavigation .deckWeeks>article{width:auto!important;min-width:0;min-height:0;padding:clamp(18px,2vw,28px)!important;background:#fff;border:1px solid #d7e5ea!important;border-top:6px solid var(--portal-course)!important;border-radius:24px;box-shadow:0 8px 25px #17304c09;display:grid;grid-template-rows:52px auto 1fr auto auto;align-content:start;gap:15px}
+#deckHome.portalNavigation .deckWeeks>article>span{display:block!important;font-size:13px!important;font-weight:750;line-height:1.4;margin:0!important;color:#4c6c76!important;align-self:start;max-width:100%}
+#deckHome.portalNavigation .deckWeeks h2{font-size:clamp(26px,2.5vw,36px)!important;line-height:1.2;margin:0!important;letter-spacing:-.6px}
+#deckHome.portalNavigation .deckWeeks p{font-size:clamp(15px,1.4vw,19px)!important;line-height:1.45;margin:0!important;color:#52667c}
+#deckHome.portalNavigation .deckWeeks article button{display:flex!important;align-items:center;justify-content:center;width:100%;min-height:64px;margin:0!important;padding:14px 12px!important;border:1px solid #d7e5eb;border-radius:15px;font-size:clamp(16px,1.45vw,21px)!important;font-weight:700!important;line-height:1.3;text-align:center;background:#f5fafb;color:#17304c;box-shadow:none;white-space:normal}
+#deckHome.portalNavigation .deckWeeks article button:hover{background:#eaf5f7;border-color:#88bac4}
+#deckHome.portalNavigation .deckWeeks>button{min-width:0;border-radius:22px;padding:22px;min-height:44px;font-size:20px;line-height:1.4;box-shadow:0 8px 25px #17304c09}
+#deckHome.portalNavigation .deckWeeks>button span{font-size:48px;margin:12px 0}
+#deckHome.portalNavigation button:focus-visible{outline:3px solid #087d91;outline-offset:4px}
+@media(max-width:1100px){
+#deckHome.portalWeekMenu .deckWeeks{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:14px!important;padding:0}
+#deckHome.portalWeekMenu .deckWeeks>article{grid-template-columns:1fr 1fr;grid-template-rows:20px 32px auto auto;gap:8px 14px;padding:16px 20px!important;border-radius:20px}
+#deckHome.portalWeekMenu .deckWeeks>article>span,#deckHome.portalWeekMenu .deckWeeks h2,#deckHome.portalWeekMenu .deckWeeks p{grid-column:1/-1}
+#deckHome.portalWeekMenu .deckWeeks h2{font-size:27px!important}
+#deckHome.portalWeekMenu .deckWeeks>article>span{font-size:12px!important}
+#deckHome.portalWeekMenu .deckWeeks article button{min-height:48px;font-size:16px!important;padding:10px!important}
+#deckHome.portalFolderMenu .deckCourseGrid>button{padding:16px 84px 16px 18px!important}
+#deckHome.portalFolderMenu .deckCourseGrid>button>span{right:14px;bottom:20px;font-size:34px!important}
+#deckHome.portalFolderMenu .deckCourseGrid .portalRealCourseIcon{width:66px;height:66px}
+}
+@media(max-height:650px) and (min-width:700px){
+#deckHome.portalNavigation .deckWelcome h1{font-size:34px!important;margin:4px 0!important}
+#deckHome.portalNavigation .deckWelcome p{margin:5px 0 0!important;font-size:15px!important}
+#deckHome.portalNavigation .deckWelcome .eyebrow{font-size:10px;margin-bottom:4px}
+#deckHome.portalNavigation .deckCourseGrid{gap:10px!important}
+#deckHome.portalNavigation .deckCourseGrid>button{padding-top:10px!important;padding-bottom:10px!important}
+#deckHome.portalNavigation .deckCourseGrid b{font-size:20px!important;margin-bottom:5px!important}
+#deckHome.portalNavigation .deckCourseGrid small{font-size:12px!important}
+#deckHome.portalNavigation .deckCourseGrid strong{font-size:12px!important;margin-top:6px!important}
+#deckHome.portalNavigation .deckHomeFooter{font-size:12px}
+}
+@media(max-width:699px),(max-height:490px){
+body.deck-enabled:has(#deckHome.portalNavigation:not([hidden])){overflow:auto}
+body.deck-enabled:has(#deckHome.portalNavigation:not([hidden])) .shell{position:relative;min-height:100dvh;height:auto;overflow:visible}
+#deckHome.portalNavigation:not([hidden]){height:auto}
+#deckHome.portalFolderMenu .deckCourseGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:none;grid-auto-rows:minmax(155px,auto)}
+#deckHome.portalFolderMenu .deckCourseGrid>button{padding:16px!important;padding-right:16px!important;justify-content:flex-start;padding-bottom:58px!important}
+#deckHome.portalFolderMenu .deckCourseGrid>button>span{right:12px;bottom:12px}
+#deckHome.portalFolderMenu .deckCourseGrid strong{position:absolute!important;left:16px;bottom:18px}
+#deckHome.portalWeekMenu .deckWeeks{grid-template-columns:1fr;grid-auto-rows:auto}
+#deckHome.portalWeekMenu .deckWeeks>article{min-height:210px}
+#deckHome.portalNavigation .deckHomeFooter{align-items:flex-start;font-size:12px}
+#deckHome.portalNavigation .deckWelcome [data-deckback]{float:none;margin:0 0 14px}
+}
+@media(prefers-reduced-motion:reduce){#deckHome.portalNavigation .deckCourseGrid>button{transition:none}#deckHome.portalNavigation .deckCourseGrid>button:hover{transform:none}}
+}
+
+.epCourses .portalRealCourseIcon{display:block;width:110px;height:110px;object-fit:contain;margin:0 auto 12px}
+.evCourses .evFolderIcon{background:transparent!important;border:0!important;width:96px!important;height:96px!important;padding:0!important}
+.evCourses .portalRealCourseIcon{display:block;width:96px;height:96px;object-fit:contain}
+#deckHome.portalNavigation .deckWeeks>button .portalRealCourseIcon{width:100px;height:100px;object-fit:contain}
+@media screen and (min-width:700px) and (max-width:899px){
+body.deck-enabled:has(#deckHome.portalFolderMenu:not([hidden])){overflow:auto}
+body.deck-enabled:has(#deckHome.portalFolderMenu:not([hidden])) .shell{position:relative;min-height:100dvh;height:auto;overflow:visible}
+#deckHome.portalFolderMenu:not([hidden]){height:auto}
+#deckHome.portalFolderMenu .deckCourseGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-rows:none;grid-auto-rows:minmax(160px,auto)}
+}
