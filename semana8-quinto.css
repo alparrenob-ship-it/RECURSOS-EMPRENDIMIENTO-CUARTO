@@ -55,3 +55,11 @@ body.deck-q8 .shell>:not(#quintoWeek8){display:none!important}
 #quintoWeek8 .q8HelpDialog{width:900px;max-width:90vw;border:2px solid #7dab92;border-radius:22px;padding:28px;color:#183e43;background:white}#quintoWeek8 .q8HelpDialog::backdrop{background:#10271dcc}#quintoWeek8 .q8HelpDialog ol{font-size:28px;line-height:1.8}
 
 #quintoWeek8 .q8PagesExpanded .q8WritingLine{display:none}#quintoWeek8 .q8PagesExpanded .q8LogoSlot{min-height:120px}#quintoWeek8 .q8PagesExpanded .q8FourCards article{padding:10px 14px;gap:6px}#quintoWeek8 .q8PagesExpanded .q8PagesSheet{padding:12px 22px;gap:8px}#quintoWeek8 .q8PagesExpanded .q8PagesSheet>h3{font-size:32px}#quintoWeek8 .q8PagesExpanded .q8Topic input{padding:6px 13px}
+
+/* Cuatro ODS en una sola fila, con su explicación debajo. */
+#quintoWeek8 .q8FourCards,#quintoWeek8 .q8PagesExpanded .q8FourCards{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:minmax(0,1fr);gap:18px}
+#quintoWeek8 .q8PagesExpanded .q8FourCards article{padding:12px;gap:12px;min-width:0;overflow:hidden}
+#quintoWeek8 .q8PagesExpanded .q8LogoSlot{min-height:0;flex:1;flex-direction:column;gap:8px;border:0;background:white;overflow:hidden}
+#quintoWeek8 .q8PagesExpanded .q8LogoSlot img{max-height:none;width:100%;height:100%;max-width:100%;object-fit:contain}
+#quintoWeek8 .q8OdsReason{display:block;width:100%;height:90px;min-height:70px;resize:none;border:1px solid #c2d7ca;border-radius:10px;padding:10px;background:#f8fcfa;font-size:23px;line-height:1.25;flex-shrink:0}
+#quintoWeek8 .q8PagesCover .q8OdsReason{font-size:16px;height:110px;padding:6px}
