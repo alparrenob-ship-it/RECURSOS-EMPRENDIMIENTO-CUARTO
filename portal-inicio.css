@@ -4,7 +4,6 @@
 @media(prefers-reduced-motion:reduce){.deckCourseGrid button{transition:none!important}.deckCourseGrid button:hover{transform:none!important}}
 
 /* Imágenes de carpetas generadas: sexto naranja y séptimo rosado. */
-.deckCourseGrid .portalRealCourseIcon,.portalZoomLayer .portalRealCourseIcon{display:block;width:96px;height:96px;object-fit:contain;object-position:center;filter:drop-shadow(0 3px 4px #17304c12)}
-.deckCourseGrid button:has(.portalRealCourseIcon){position:relative;padding-right:150px!important;min-height:190px}
-.deckCourseGrid button:has(.portalRealCourseIcon)>span{position:absolute;right:25px;bottom:18px;line-height:0}
-.deckCourseGrid button:has(.portalRealCourseIcon)>strong{top:25px}
+.deckCourseGrid .portalRealCourseIcon,.portalZoomLayer .portalRealCourseIcon{display:block;width:88px;height:88px;object-fit:contain;object-position:center;filter:drop-shadow(0 3px 4px #17304c12)}
+.deck-home:has([data-equipos-open]) .deckCourseGrid button:has(.portalRealCourseIcon){position:relative;padding-right:120px!important}
+.deck-home:has([data-equipos-open]) .deckCourseGrid button:has(.portalRealCourseIcon)>span{position:absolute;right:18px;bottom:10px;line-height:0}
