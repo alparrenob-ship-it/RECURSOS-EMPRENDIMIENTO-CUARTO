@@ -2,3 +2,9 @@
 .portalZoomLayer{position:fixed;z-index:2147483646;pointer-events:none;display:flex;flex-direction:column;justify-content:center;gap:8px;overflow:hidden;background:#fff;border:2px solid #dce9ee;border-top:7px solid var(--portal-accent,#008fa5);border-radius:20px;padding:24px;color:#17304c;box-shadow:0 18px 60px #17304c24;transform-origin:center;will-change:transform,opacity}
 .portalZoomLayer span{font-size:34px}.portalZoomLayer b{font-size:24px}
 @media(prefers-reduced-motion:reduce){.deckCourseGrid button{transition:none!important}.deckCourseGrid button:hover{transform:none!important}}
+
+/* Imágenes de carpetas generadas: sexto naranja y séptimo rosado. */
+.deckCourseGrid .portalRealCourseIcon,.portalZoomLayer .portalRealCourseIcon{display:block;width:96px;height:96px;object-fit:contain;object-position:center;filter:drop-shadow(0 3px 4px #17304c12)}
+.deckCourseGrid button:has(.portalRealCourseIcon){position:relative;padding-right:150px!important;min-height:190px}
+.deckCourseGrid button:has(.portalRealCourseIcon)>span{position:absolute;right:25px;bottom:18px;line-height:0}
+.deckCourseGrid button:has(.portalRealCourseIcon)>strong{top:25px}

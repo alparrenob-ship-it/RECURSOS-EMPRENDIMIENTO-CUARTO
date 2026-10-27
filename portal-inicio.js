@@ -7,9 +7,21 @@ function addProjectFolder(){
  if(!grid||grid.querySelector('[data-portal-project]'))return;
  grid.insertAdjacentHTML('beforeend','<button data-portal-project style="--accent:#10a9b4"><span aria-hidden="true">📂</span><b>Presentación de Proyecto V1</b><small>Demo Day · Quinto a séptimo</small><strong>Entrar →</strong></button>');
 }
+function addRealCourseIcons(){
+ for(const grade of [6,7]){
+  const slot=deckHome.querySelector('[data-deckcourse="'+grade+'"] > span');
+  if(!slot)continue;
+  slot.setAttribute('aria-hidden','true');
+  const image=document.createElement('img');
+  image.src='iconos-cursos/carpeta-'+grade+'.webp';
+  image.alt='';image.className='portalRealCourseIcon';image.width=96;image.height=96;
+  slot.replaceChildren(image);
+ }
+}
 const previousHome=deckShowHome;
-deckShowHome=function(){const result=previousHome.apply(this,arguments);addProjectFolder();return result};
+deckShowHome=function(){const result=previousHome.apply(this,arguments);addProjectFolder();addRealCourseIcons();return result};
 addProjectFolder();
+addRealCourseIcons();
 let activeLayer=null;
 function zoom(button){
  if(reduced())return;
@@ -18,7 +30,7 @@ function zoom(button){
  if(!rect.width||!rect.height)return;
  const layer=document.createElement('div');layer.className='portalZoomLayer';layer.setAttribute('aria-hidden','true');
  const icon=button.querySelector(':scope > span'),title=button.querySelector(':scope > b,:scope > h2,:scope > strong');
- if(icon){const span=document.createElement('span');span.textContent=icon.textContent;layer.append(span)}
+ if(icon){layer.append(icon.cloneNode(true))}
  const text=document.createElement('b');text.textContent=title?.textContent||button.textContent;layer.append(text);
  Object.assign(layer.style,{left:rect.left+'px',top:rect.top+'px',width:rect.width+'px',height:rect.height+'px'});
  layer.style.setProperty('--portal-accent',getComputedStyle(button).getPropertyValue('--accent')||'#008fa5');
