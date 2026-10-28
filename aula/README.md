@@ -57,3 +57,11 @@ Ejecutar `sql/002_acceso_estudiantil.sql` después de 001 y activar Allow anonym
 El ingreso comprueba pertenencia al padrón, no identidad personal: conocer los datos de otro estudiante permitiría intentar suplantarlo. No se usan nombres como contraseñas secretas. Una baja en aula_members.active revoca el acceso en cada consulta/guardado. Los trabajos se guardan por equipo; la última edición guardada sustituye la anterior. Los registros antiguos del navegador no se importan automáticamente.
 
 Hasta ejecutar 002 y activar las sesiones anónimas, la nueva página rechaza el acceso con un mensaje de configuración pendiente. Para probar basta un paralelo importado, por ejemplo Quinto A; no es necesario esperar a todos. Publicaciones en borrador quedan ocultas.
+
+
+## Panel docente por actividad y equipo · Paso 4
+Ejecutar `sql/004_panel_evaluacion.sql` desde `aula-panel-actualizar.html`. Añade project_problem/project_solution y aula_evaluations con RLS exclusivo docente. El guardado de la evaluación es una sola transacción RPC: 3 de vinculación ODS + 2 de explicaciones + 2 de trabajo en equipo; orden, organización y aporte individual (1 cada uno) por ID de integrante. Las casillas vacías se conservan como null y no se convierten en cero. Las evaluaciones históricas 4+4+2 quedan intactas y consultables aparte. La nueva escala no se aplica retroactivamente a esas notas.
+
+El panel carga todas las publicaciones ya registradas del paralelo, manteniendo una actividad por semana por la restricción existente. La actividad actual es ODS semana 8; futuros tipos de actividad necesitarán su representación de evidencia correspondiente. Cada publicación tiene su disponibilidad y sus evaluaciones independientes. Revisar equipo muestra primero integrantes ordenados por rol y después proyecto e historial de trabajos submitted. Las actividades sin entrega permanecen pendientes; una evaluación no inventa una entrega.
+
+Si falta el paso 4, las consultas de equipos/entregas siguen disponibles, se muestra el enlace de instalación y se bloquean los nuevos guardados. No se abre ninguna tabla a estudiantes ni se modifica su sesión. Los datos del iPad y los registros de Supabase no se sincronizan automáticamente: después de la importación, las ediciones del panel docente se guardan en Supabase; la carpeta Equipos original sigue siendo local.
