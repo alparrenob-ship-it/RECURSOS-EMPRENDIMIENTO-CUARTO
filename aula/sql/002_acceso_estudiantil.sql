@@ -6,13 +6,32 @@ RETURNS text LANGUAGE sql IMMUTABLE SET search_path='' AS $$
  SELECT regexp_replace(lower(translate(btrim(coalesce(v,'')),
  'ÁÉÍÓÚÜáéíóúü','AEIOUUaeiouu')), '[[:space:]]+', ' ', 'g');
 $$;
+-- Las listas oficiales usan apellido(s) antes de nombre(s).
+CREATE OR REPLACE FUNCTION aula_private.partes_nombre(v text)
+RETURNS jsonb LANGUAGE plpgsql IMMUTABLE SET search_path='' AS $$
+DECLARE a text[]:=regexp_split_to_array(btrim(regexp_replace(coalesce(v,''),'[[:space:]]+',' ','g')),' '); n integer; corte integer;
+BEGIN
+ n:=coalesce(array_length(a,1),0);
+ IF n<2 THEN RETURN jsonb_build_object('apellidos','','nombres',coalesce(v,'')); END IF;
+ -- Coma explícita: apellidos, nombres.
+ IF position(',' IN v)>0 THEN RETURN jsonb_build_object('apellidos',btrim(split_part(v,',',1)),'nombres',btrim(substring(v FROM position(',' IN v)+1))); END IF;
+ corte:=CASE WHEN n>=4 THEN 2 ELSE 1 END;
+ IF lower(a[1]) IN('de','del','la','las','los','san','santa','van','von') THEN
+ corte:=1;
+ WHILE corte<n-1 AND lower(a[corte]) IN('de','del','la','las','los','san','santa','van','von') LOOP corte:=corte+1; END LOOP;
+ END IF;
+ RETURN jsonb_build_object('apellidos',array_to_string(a[1:corte],' '),'nombres',array_to_string(a[corte+1:n],' '));
+END; $$;
 CREATE OR REPLACE FUNCTION aula_private.coincide_nombre(guardado text, escrito text)
 RETURNS boolean LANGUAGE sql IMMUTABLE SET search_path='' AS $$
- SELECT aula_private.normalizar_nombre(guardado)=aula_private.normalizar_nombre(escrito)
- OR EXISTS (SELECT 1 FROM (SELECT string_to_array(aula_private.normalizar_nombre(guardado),' ') a) s,
- generate_series(1,least(array_length(s.a,1)-1,3)) n
- WHERE array_to_string(s.a[n+1:array_length(s.a,1)]||s.a[1:n],' ')=aula_private.normalizar_nombre(escrito));
+ WITH partes AS (SELECT aula_private.partes_nombre(guardado) p),
+ entrada AS (SELECT DISTINCT token FROM unnest(string_to_array(aula_private.normalizar_nombre(escrito),' ')) token
+ WHERE token NOT IN('','de','del','la','las','los','san','santa','van','von'))
+ SELECT EXISTS(SELECT 1 FROM entrada WHERE token=ANY(string_to_array(aula_private.normalizar_nombre(p->>'nombres'),' ')))
+ AND EXISTS(SELECT 1 FROM entrada WHERE token=ANY(string_to_array(aula_private.normalizar_nombre(p->>'apellidos'),' ')))
+ AND (SELECT count(*) FROM entrada)>=2 FROM partes;
 $$;
+REVOKE ALL ON FUNCTION aula_private.partes_nombre(text) FROM PUBLIC,anon,authenticated;
 CREATE OR REPLACE FUNCTION aula_private.equipo_estudiante()
 RETURNS uuid LANGUAGE sql STABLE SECURITY DEFINER SET search_path='' AS $$
  SELECT m.team_id FROM public.aula_enrollments e
@@ -37,10 +56,10 @@ BEGIN
  IF EXISTS(SELECT 1 FROM public.aula_access_requests WHERE auth_user_id=uid AND requested_at>now()-interval '3 seconds') THEN
  RETURN jsonb_build_object('status','retry'); END IF;
  SELECT count(*) INTO matches FROM public.aula_members m JOIN public.aula_teams t ON t.id=m.team_id
- WHERE m.active AND t.grade=p_grade AND t.parallel=p_parallel AND aula_private.coincide_nombre(m.full_name,p_name);
+ WHERE m.active AND t.grade=p_grade AND t.parallel=p_parallel AND t.group_number=p_group AND aula_private.coincide_nombre(m.full_name,p_name);
  IF matches=1 THEN
  SELECT m.id,t.group_number INTO matching,matched_group FROM public.aula_members m JOIN public.aula_teams t ON t.id=m.team_id
- WHERE m.active AND t.grade=p_grade AND t.parallel=p_parallel AND aula_private.coincide_nombre(m.full_name,p_name);
+ WHERE m.active AND t.grade=p_grade AND t.parallel=p_parallel AND t.group_number=p_group AND aula_private.coincide_nombre(m.full_name,p_name);
  END IF;
  INSERT INTO public.aula_access_requests(auth_user_id,requested_grade,requested_parallel,requested_group,requested_name,matched_member_id,state,requested_at,reviewed_at)
  VALUES(uid,p_grade,p_parallel,p_group,btrim(p_name),CASE WHEN matched_group=p_group THEN matching END,
@@ -62,7 +81,7 @@ BEGIN
  SELECT * INTO t FROM public.aula_teams WHERE id=tid;
  SELECT mm.* INTO m FROM public.aula_members mm JOIN public.aula_enrollments e ON e.member_id=mm.id WHERE e.auth_user_id=auth.uid();
  SELECT * INTO p FROM public.aula_publications WHERE grade=t.grade AND parallel=t.parallel AND week_number=8 AND state IN('available','closed');
- SELECT jsonb_build_object('status','ok','user',jsonb_build_object('grade',t.grade,'parallel',t.parallel,'group',t.group_number,'name',m.full_name),
+ SELECT jsonb_build_object('status','ok','user',jsonb_build_object('grade',t.grade,'parallel',t.parallel,'group',t.group_number,'name',m.full_name,'givenName',aula_private.partes_nombre(m.full_name)->>'nombres'),
  'team',jsonb_build_object('name',t.team_name,'color',t.color_hex,'colorName',t.color_name,
  'project',jsonb_build_object('title',t.project_title,'official',t.project_description),
  'members',coalesce((SELECT jsonb_agg(jsonb_build_object('name',full_name,'role',role_name) ORDER BY
