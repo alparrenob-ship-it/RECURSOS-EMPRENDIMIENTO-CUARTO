@@ -43,3 +43,22 @@ body.deck-equipos .shell>:not(#equiposPortal){display:none!important}
 @media(max-width:1050px){#equiposPortal{inset:6px;padding:17px}.epCourses{grid-template-columns:repeat(2,1fr)}#equiposPortal .teamsGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.epTools .epButton{font-size:14px!important}}
 @media(max-width:650px){#equiposPortal{inset:0;border-radius:0;padding:13px}.epHeader{align-items:flex-start;flex-wrap:wrap}.epHeader h1{font-size:30px}.epHeader .epButton{font-size:12px!important;padding:9px!important}.epContext{gap:10px}.epContext span{margin-left:0;width:100%}#equiposPortal .teamsGrid{grid-template-columns:1fr}.epCourses{gap:13px}.epCourses button{padding:18px;min-height:180px}.epCourses b{font-size:25px}.epFooter{font-size:10px}.epWelcome h2{font-size:30px}}
 @media print{body.deck-equipos .shell{display:none!important}}
+
+/* Fichas de proyecto por equipo. */
+#equiposPortal .teamCard{border:1px solid #dce8ed;border-top:5px solid var(--team);border-radius:22px;padding:20px;background:#fff;box-shadow:0 8px 24px #18384d09;min-width:0}
+#equiposPortal .epTeamHeading{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}
+#equiposPortal .epGroupCircle{width:62px;height:62px;flex:0 0 62px;border-radius:50%;display:grid;place-items:center;background:var(--team);color:#18344b;font-size:25px;font-weight:900;box-shadow:0 0 0 5px color-mix(in srgb,var(--team) 18%,white)}
+#equiposPortal .epTopic{flex:1;min-width:0}#equiposPortal .epTopic small{font-size:13px;color:#657b8a}
+#equiposPortal .epBriefField{display:block;margin:0;min-width:0}#equiposPortal .epBriefField>span,#equiposPortal label.epBriefField{font-size:12px;font-weight:800;color:#497080;letter-spacing:.025em}
+#equiposPortal .epBriefField p{margin:5px 0 8px;font-size:16px;line-height:1.4;overflow-wrap:anywhere;color:#18384d}
+#equiposPortal .epTopic .epBriefField p{font-size:20px;font-weight:800}#equiposPortal .epBriefField p.epPending{color:#738793;font-weight:500}
+#equiposPortal .epBriefField textarea{display:block;width:100%;box-sizing:border-box;resize:vertical;font:inherit;font-size:16px;font-weight:500;line-height:1.4;min-height:62px;border:1px solid #c9dce2;border-radius:10px;padding:10px;background:#fff;color:#18384d;margin:6px 0}
+#equiposPortal .epBriefField textarea:focus{outline:3px solid #2ba9b433;border-color:#17818d}
+#equiposPortal .epProjectBrief{display:grid;gap:14px;background:#f3f8fa;border:1px solid #e3edf0;border-radius:14px;padding:14px;margin-bottom:16px}
+#equiposPortal .epTeamName{font-size:14px;color:#586f7e;margin:12px 0 16px}
+#equiposPortal .memberRow{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:10px;padding:12px 0}
+#equiposPortal .memberRow b{display:flex;align-items:baseline;gap:8px;font-size:16px}
+#equiposPortal .epMemberNumber{color:#6e8794;font-size:12px;flex:none}#equiposPortal .memberRow .epRole{font-size:13px;font-weight:700;background:#eef5f7;border-radius:20px;padding:7px 9px;justify-self:start}
+@media(max-width:650px){#equiposPortal .epGroupCircle{width:54px;height:54px;flex-basis:54px;font-size:22px}#equiposPortal .teamCard{padding:16px}}
+
+#equiposPortal .epRemoveMember{display:block;background:#fff;border:1px solid #e3c8c7;color:#984746;border-radius:9px;font-size:12px;padding:8px;margin-top:5px;cursor:pointer}
