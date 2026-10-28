@@ -1,0 +1,34 @@
+/* Piloto local. No implementa autenticación ni permisos de servidor. */
+(function(w){'use strict';
+const names={5:'Quinto',6:'Sexto',7:'Séptimo'},colors=['#ef8fba','#71c9e7','#ffd465','#83d9ad','#aa9cec','#edaa83'],colorNames=['Rosado','Celeste','Amarillo','Verde','Lila','Durazno'];
+const goals=['Fin de la pobreza','Hambre cero','Salud y bienestar','Educación de calidad','Igualdad de género','Agua limpia y saneamiento','Energía asequible y no contaminante','Trabajo decente y crecimiento económico','Industria, innovación e infraestructura','Reducción de las desigualdades','Ciudades y comunidades sostenibles','Producción y consumo responsables','Acción por el clima','Vida submarina','Vida de ecosistemas terrestres','Paz, justicia e instituciones sólidas','Alianzas para lograr los objetivos'];
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ident=v=>String(v||'').normalize('NFC').trim().replace(/\s+/g,' ').toLocaleLowerCase('es');
+const read=(k,f)=>{try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}};
+function write(k,v){try{const raw=JSON.stringify(v);localStorage.setItem(k,raw);if(localStorage.getItem(k)!==raw)throw Error();}catch{throw Error('No se pudo guardar. Revisa el espacio o la navegación privada.');}return v;}
+const dataset=g=>({5:w.quintoWeek8Projects,6:w.sextoWeek8Projects,7:w.septimoWeek8Projects})[g]||[];
+function context(g,p,n){g=+g;n=+n;if(!names[g]||!['A','B','C'].includes(p)||!dataset(g).some(x=>x.parallel===p&&x.group===n))throw Error('Selecciona un curso, paralelo y equipo válidos.');return {grade:g,parallel:p,group:n};}
+const key=c=>`${c.grade}-${c.parallel}-G${c.group}`;
+const project=c=>dataset(c.grade).find(x=>x.parallel===c.parallel&&x.group===c.group);
+const groupIds=(g,p)=>dataset(g).filter(x=>x.parallel===p).map(x=>x.group);
+function team(c){const r=read(`emprendimiento-g57-${c.grade}-${c.parallel}-s1`,{}).teams?.[c.group-1];const members=(r?.members||[]).filter(x=>typeof x.name==='string'&&x.name.trim()).map(x=>({name:x.name,role:(x.roles||[]).join(' · ')||'Rol por confirmar'}));return {name:r?.name||`Equipo ${c.group}`,norm:r?.norm||'',members,color:colors[(c.group-1)%6],colorName:colorNames[(c.group-1)%6],project:project(c)};}
+function identity(input){const c=context(input.grade,input.parallel,input.group),name=String(input.name||'').trim().replace(/\s+/g,' ');if(name.length<4||name.length>120||name.split(' ').length<2)throw Error('Escribe tu nombre y apellido.');const all=read(`emprendimiento-g57-${c.grade}-${c.parallel}-s1`,{}).teams||[];const assigned=all.findIndex(t=>(t.members||[]).some(m=>ident(m.name)===ident(name)));if(all.some(t=>t.members?.length)&&assigned<0)throw Error('Tu nombre no aparece en los equipos guardados. Pide ayuda a la docente.');if(assigned>=0&&assigned!==c.group-1)throw Error(`Tu equipo registrado es el ${assigned+1}. Selecciónalo para continuar.`);return {...c,name};}
+const activityKey=c=>`ea-aula-w8-${key(c)}-v1`;
+const portfolioKey=c=>`ea-aula-portafolio-${key(c)}-v1`;
+const blank=()=>({ods:[null,null,null,null],reasons:['','','',''],principal:0,indicator:'',status:'draft',savedAt:null,submittedAt:null});
+const work=c=>({...blank(),...read(activityKey(c),{})});
+const publication=(g,p)=>read(`ea-aula-publicacion-${g}-${p}-w8-v1`,{state:'available'}).state;
+function publish(g,p,state){context(g,p,1);if(!['draft','available','closed'].includes(state))throw Error('Estado no válido.');return write(`ea-aula-publicacion-${g}-${p}-w8-v1`,{state,updatedAt:new Date().toISOString()});}
+function save(c,value,author,submit=false){context(c.grade,c.parallel,c.group);if(publication(c.grade,c.parallel)!=='available')throw Error('La docente ha cerrado esta actividad.');const data={ods:(value.ods||[]).slice(0,4).map(x=>x===null?null:Number(x)),reasons:(value.reasons||[]).slice(0,4).map(x=>String(x).slice(0,250)),principal:+value.principal,indicator:String(value.indicator||'').slice(0,150)};
+if(data.ods.length!==4||data.reasons.length!==4||data.ods.some(x=>x!==null&&(!Number.isInteger(x)||x<1||x>17))||new Set(data.ods.filter(x=>x!==null)).size!==data.ods.filter(x=>x!==null).length||!Number.isInteger(data.principal)||data.principal<0||data.principal>3)throw Error('Escoge cuatro ODS distintos.');
+if(submit&&(data.ods.some(x=>x===null)||data.reasons.some(x=>x.trim().length<5)||c.grade===7&&!data.indicator.trim()))throw Error(c.grade===7?'Completa los cuatro ODS, sus explicaciones y qué medirán.':'Completa los cuatro ODS y sus explicaciones.');
+const now=new Date().toISOString(),prev=work(c);return write(activityKey(c),{...data,status:submit?'submitted':'draft',savedAt:now,submittedAt:submit?now:prev.submittedAt,author:String(author||'').slice(0,120),version:(prev.version||0)+1});}
+function portfolio(c){return read(portfolioKey(c),{url:'',app:'Pages',updatedAt:null});}
+function savePortfolio(c,url,app){context(c.grade,c.parallel,c.group);let u;try{u=new URL(url.trim());}catch{throw Error('Pega el enlace compartido completo.');}if(u.protocol!=='https:'||!['icloud.com','www.icloud.com','share.icloud.com'].includes(u.hostname)||u.username||u.password)throw Error('Usa el enlace HTTPS compartido de Pages o Keynote en iCloud.');if(!['Pages','Keynote'].includes(app))throw Error('Selecciona Pages o Keynote.');return write(portfolioKey(c),{url:u.href,app,updatedAt:new Date().toISOString()});}
+function gradeKey(c){return `ea-aula-rubrica-w8-${key(c)}-v1`;}
+const grades=c=>read(gradeKey(c),{ods:null,reasons:null,members:{},comment:''});
+function saveGrades(c,value){context(c.grade,c.parallel,c.group);const valid=(n,max)=>n===null||(Number.isInteger(n)&&n>=0&&n<=max);if(!valid(value.ods,4)||!valid(value.reasons,4)||Object.values(value.members||{}).some(n=>!valid(n,2)))throw Error('Revisa los puntajes: 4 + 4 + 2.');const roster=team(c).members;if(Object.keys(value.members||{}).some(n=>!roster.some(m=>m.name===n)))throw Error('Un integrante cambió. Revisa los equipos.');return write(gradeKey(c),{...value,comment:String(value.comment||'').slice(0,500),savedAt:new Date().toISOString()});}
+function receipt(c){const x=work(c),p=portfolio(c);return {format:'ea-aula-evidencia-w8-v1',context:c,project:project(c)?.title,activity:x,portfolio:p};}
+function download(value,name){const u=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);}
+w.Aula={names,goals,esc,ident,read,write,context,key,project,groupIds,team,identity,work,publication,publish,save,portfolio,savePortfolio,grades,saveGrades,receipt,download};
+})(window);

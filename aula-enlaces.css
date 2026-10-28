@@ -1,0 +1,5 @@
+#deckHome.portalNavigation .aula-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+#deckHome.portalNavigation .aula-links a{color:#08776f;border:1px solid #bfdad5;background:#fff;border-radius:10px;padding:9px 13px;font-size:14px;text-decoration:none;font-weight:750;min-height:40px;display:flex;align-items:center}
+#deckHome.portalNavigation .aula-links a:hover{background:#e7f5ef}
+#deckHome.portalNavigation .aula-home-links{float:right;margin:0 0 12px 20px}
+@media(max-width:1000px){#deckHome.portalNavigation .aula-home-links{float:none;margin:0 0 12px}#deckHome.portalNavigation .aula-links a{font-size:12px;padding:7px 10px;min-height:36px}}
