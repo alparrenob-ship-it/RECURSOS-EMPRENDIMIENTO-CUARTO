@@ -7,3 +7,8 @@
 @media(max-width:750px){.cloud-member{grid-template-columns:1fr 1fr}.cloud-member>.button{grid-column:1/-1}.online-status{font-size:13px}}
 
 .notice.notice-error{background:#fff0f0;color:#a51e2c;border:2px solid #d44a57;font-weight:700}.notice.notice-error:empty{display:none}select[aria-invalid="true"]{border:2px solid #d02839!important;background:#fff2f3!important;color:#9f2030!important;outline-color:#d02839}
+
+/* Selectores docentes junto al encabezado; se apilan en pantallas pequeñas. */
+.teacher-heading{display:flex;justify-content:space-between;align-items:center;gap:24px;margin:10px 0 24px}.teacher-heading .welcome{flex:1;min-width:0;margin:0}.teacher-heading .welcome h1{font-size:clamp(30px,3.5vw,46px);line-height:1.15}.teacher-heading .welcome>p:last-child{margin-bottom:0}.teacher-heading .context{display:flex;flex-wrap:nowrap;align-items:end;gap:12px;margin:0;flex:none}.teacher-heading .context label{margin:0;font-size:14px}.teacher-heading .context select{margin-top:6px;min-height:48px}.teacher-heading .context label:first-child{width:155px}.teacher-heading .context label:last-child{width:110px}
+@media(max-width:850px){.teacher-heading{align-items:flex-start;flex-wrap:wrap;gap:16px}.teacher-heading .welcome{flex-basis:100%}.teacher-heading .context{margin-left:auto}.teacher-heading .welcome h1{font-size:32px}}
+@media(max-width:430px){.teacher-heading .context{width:100%;margin-left:0}.teacher-heading .context label:first-child{width:auto;flex:1}.teacher-heading .context label:last-child{width:100px}}
