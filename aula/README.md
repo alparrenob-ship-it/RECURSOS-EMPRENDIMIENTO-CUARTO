@@ -1,4 +1,4 @@
-# Aula, semana 8 — etapa 1
+# Aula, semana 8 — acceso docente conectado
 
 ## Entregado
 
@@ -9,13 +9,19 @@
 - `aula-docente.html`: actividad por paralelo (borrador/disponible/cerrada), consulta de trabajos y portafolio, rúbrica 4 + 4 + 2, copia del paralelo y acceso a las planificaciones y Equipos originales.
 - No se modifican documentos institucionales, sesiones, datos canónicos de equipos ni calificaciones anteriores.
 
-## Límite explícito de esta etapa
+## Estado actual
 
-No hay servidor ni autenticación institucional. El panel docente existente y el piloto siguen siendo páginas públicas. No son controles de acceso seguros.
+El panel docente verifica la sesión mediante Supabase Auth, consulta `aula_is_teacher` en el servidor y solo después muestra los datos. El correo de la lista privada debe estar confirmado. La página de inicio ofrece dos accesos y revela las planificaciones al docente autorizado. Los archivos estáticos de las planificaciones no son documentos privados; los nombres, enlaces y calificaciones de la base de datos sí se protegen mediante RLS.
 
-Los nuevos datos se guardan solo en localStorage del origen y navegador actual. No se envían al docente desde otros iPad. El piloto marca esta limitación en ambas interfaces. Los nombres se contrastan con la distribución local cuando existe; escribir un nombre no prueba identidad.
+El panel docente lee y guarda equipos, integrantes, publicaciones, respuestas, portafolios y rúbricas desde las tablas de Supabase. Primero incorpora los proyectos conocidos del banco, sin nombres de alumnos. La docente puede importar explícitamente los equipos guardados en su navegador o registrar integrantes desde cada equipo. Retirar un integrante lo desactiva, sin borrar sus evaluaciones.
 
-Ninguna lista de nombres, nota, enlace compartido ni respuesta se incorpora al repositorio público. Las imágenes y el banco de proyectos ya utilizados son recursos estáticos.
+El acceso estudiantil continúa en piloto local, pendiente del paso 2: sesiones de alumnos validadas por docente y políticas de lectura/escritura por equipo. Los estudiantes todavía no envían entregas en línea. No habilitar acceso anónimo general a las tablas.
+
+No se borran los registros anteriores del navegador ni se incorporan datos escolares al repositorio público. La clave publishable es pública; las claves secret/service_role nunca se utilizan en el navegador.
+
+El cierre de sesión borra la caché docente y cierra esa sesión de Supabase; conserva las listas y actividades locales anteriores. Un fallo de red nunca se anuncia como guardado en línea ni se sustituye silenciosamente por almacenamiento local.
+
+Las notas grupales e individuales se guardan mediante solicitudes separadas. Si falla el aporte individual después del guardado grupal, la interfaz informa el guardado parcial y requiere revisar y volver a guardar; aún no se usa una transacción RPC para toda la evaluación.
 
 ## Persistencia
 
@@ -26,7 +32,7 @@ Ninguna lista de nombres, nota, enlace compartido ni respuesta se incorpora al r
 - sesión del alumno: sessionStorage `ea-aula-estudiante-v1`.
 - integrantes: lectura de los registros existentes `emprendimiento-g57-{grado}-{paralelo}-s1`; no se escriben desde el piloto.
 
-## Siguiente etapa: datos centralizados y permisos reales
+## Siguiente etapa: permisos y envío de estudiantes
 
 Se necesita un servicio de autenticación y base de datos, y confirmar el correo institucional de la docente. Supabase es una opción: acceso por enlace de correo y PostgreSQL con políticas de seguridad por fila.
 

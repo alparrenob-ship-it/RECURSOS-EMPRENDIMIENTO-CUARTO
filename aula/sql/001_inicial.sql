@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS aula_private.teacher_allowlist (
   email text PRIMARY KEY CHECK (email = lower(email)),
   created_at timestamptz NOT NULL DEFAULT now()
 );
+ALTER TABLE aula_private.teacher_allowlist ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON TABLE aula_private.teacher_allowlist FROM PUBLIC, anon, authenticated;
 INSERT INTO aula_private.teacher_allowlist(email)
 VALUES ('alparrenob@eightacademy.edu.ec') ON CONFLICT (email) DO NOTHING;
