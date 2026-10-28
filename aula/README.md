@@ -49,3 +49,11 @@ Antes de usarlo con alumnos de forma compartida:
 Referencias oficiales:
 - https://supabase.com/docs/guides/auth/auth-email-passwordless
 - https://supabase.com/docs/guides/database/postgres/row-level-security
+
+
+## Paso 2: estudiantes en línea
+Ejecutar `sql/002_acceso_estudiantil.sql` después de 001 y activar Allow anonymous sign-ins en Supabase Auth. `aula-paso2.html` permite copiar el script. La página estudiantil usa una sesión anónima con clave de almacenamiento separada de la docente y RPC limitadas a su equipo. No hay políticas de lectura pública de tablas. El ingreso exige nombre y apellido, curso, paralelo y grupo; normaliza tildes, espacios y mayúsculas y acepta el orden inverso de nombres guardados. Nombres ausentes o ambiguos se rechazan. El rechazo aparece en rojo.
+
+El ingreso comprueba pertenencia al padrón, no identidad personal: conocer los datos de otro estudiante permitiría intentar suplantarlo. No se usan nombres como contraseñas secretas. Una baja en aula_members.active revoca el acceso en cada consulta/guardado. Los trabajos se guardan por equipo; la última edición guardada sustituye la anterior. Los registros antiguos del navegador no se importan automáticamente.
+
+Hasta ejecutar 002 y activar las sesiones anónimas, la nueva página rechaza el acceso con un mensaje de configuración pendiente. Para probar basta un paralelo importado, por ejemplo Quinto A; no es necesario esperar a todos. Publicaciones en borrador quedan ocultas.
