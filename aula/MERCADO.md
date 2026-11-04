@@ -15,3 +15,26 @@ La aplicación de las preguntas se registra como real o ensayo. Cada aplicación
 Base: aula/sql/008_investigacion_mercado.sql. Publica exclusivamente grado 7, semana 9, A/B/C. Mantiene ODS en semana 8 y reutiliza aula_evaluations con su RPC y reglas de integrantes. Los campos históricos ods_score y reasons_score almacenan respectivamente Público y necesidad /3 e Instrumento /2 solo para esta publicación; teamwork_score /2 y Orden, Organización, Aporte /1 cada uno conservan su significado. No se convierten ni reemplazan evaluaciones de otras semanas.
 
 Validación: SQL ejecutado primero en PGlite con sesiones ficticias: aislamiento por equipo/grado, permisos de estudiante y docente, autoría por campo, conflictos de versión, imágenes y claves válidas, registro de cuatro respuestas en las tres técnicas y una sola evaluación 7+3. Los ensayos locales no usan nombres reales ni escriben en producción.
+
+## Investigación aplicada · actualización noviembre 2026
+
+La interfaz usa `aula_market_v2_snapshot/save/add_response`. Conserva contenido,
+respuestas históricas y evaluación 7+3 de la publicación de semana 9.
+
+- Quinto: encuesta de 5 preguntas. Sexto: encuesta de 6.
+- Séptimo: encuesta de 8, entrevista abierta (2 obligatorias y 2 opcionales)
+  con público y enlace HTTPS, u observación con mapa de empatía.
+- Cada aplicación conserva las preguntas/opciones usadas. Los gráficos agrupan
+  únicamente aplicaciones reales con el mismo instrumento exacto; no mezclan
+  ensayos, entrevistas ni versiones. Incluyen cantidades, porcentajes y empates.
+- El análisis sugerido describe frecuencias; no infiere causalidad ni representa
+  automáticamente a toda la población. Se copia solo por acción del estudiante,
+  se edita y se guarda por versión del instrumento.
+- El portafolio presenta resultados y análisis escritos por el equipo. Rúbrica y
+  autorías solo se reciben en sesión docente; no aparecen al presentar o imprimir.
+- La observación distingue evidencia y supuestos; pensamientos y sentimientos
+  no se deducen como hechos a partir de lo que se ve.
+
+Verificación de comportamiento: `node aula/tests/market-v2.cjs` desde la raíz.
+Las pruebas transaccionales en Supabase se ejecutan con rollback para no conservar
+entregas ni aplicaciones de prueba.
