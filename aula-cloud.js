@@ -19,6 +19,7 @@ function create(client,A){
   let teams=await result(client.from('aula_teams').select('*').eq('grade',g).eq('parallel',p));
   const missing=A.groupIds(g,p).filter(n=>!teams.some(t=>t.group_number===n)).map(n=>{const c=A.context(g,p,n),s=local.team(c);return {grade:g,parallel:p,group_number:n,color_name:s.colorName,color_hex:s.color,project_title:s.project.title,project_description:s.project.official||'',team_name:''};});
   if(missing.length){try{await result(client.from('aula_teams').insert(missing));}catch(e){if(!/duplicate|unique/i.test(e.message))throw e;}teams=await result(client.from('aula_teams').select('*').eq('grade',g).eq('parallel',p));}
+  if(+g===6&&p==='C')teams=teams.filter(t=>t.group_number===1);
   const ids=teams.map(t=>t.id),pubs=await result(client.from('aula_publications').select('*').eq('grade',g).eq('parallel',p));
   if(!pubs.some(x=>x.week_number===8))throw Error('No se encontró la actividad semanal. Revisa el script de preparación.');
   const publication=pubs.find(x=>x.week_number===8);
