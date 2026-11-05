@@ -9,9 +9,8 @@ function editor(){const d=data();const text=(k,l,max)=>`<label>${l}<${k==='topic
 function view(edit){return edit?`<div class="cover-design-layout">${editor()}<div class="cover-preview"><p>VISTA PREVIA · 16:9</p><div data-cover-preview>${preview()}</div></div></div>`:preview();}
 function updatePreview(root){const p=root.querySelector('[data-cover-preview]');if(p)p.innerHTML=preview();}
 function field(root,t){if(!draft)return;if(t.hasAttribute('data-cover')){const k=t.dataset.cover;draft[k]=['size','zoom','x','y'].includes(k)?+t.value:t.value;updatePreview(root);return true;}return false;}
-async function upload(file){
+async function prepareImage(file){
  if(!file)return;
- if(!draft)throw Error('Pulsa Editar portada antes de subir el logotipo.');
  if(file.size>20000000)throw Error('La imagen supera 20 MB. Elige una más pequeña.');
  const imageType=(file.type||'').toLowerCase();
  if(!imageType.startsWith('image/')&&!/\.(png|jpe?g|webp|gif|heic|heif|avif|bmp)$/i.test(file.name||''))throw Error('El archivo no es una imagen. Elige el logotipo desde Fotos o Archivos.');
@@ -22,8 +21,9 @@ async function upload(file){
   const c=document.createElement('canvas');let edge=720,out='';
   while(edge>=180){const scale=Math.min(1,edge/Math.max(im.naturalWidth,im.naturalHeight));c.width=Math.max(1,Math.round(im.naturalWidth*scale));c.height=Math.max(1,Math.round(im.naturalHeight*scale));const ctx=c.getContext('2d');if(!ctx)throw Error('No se pudo preparar la imagen. Vuelve a intentarlo.');ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(im,0,0,c.width,c.height);out=c.toDataURL('image/webp',.8);if(out.length<=310000)break;edge=Math.floor(edge*.7);}
   if(!out||out.length>320000)throw Error('No se pudo reducir esta imagen. Prueba un PNG o JPG más sencillo.');
-  draft.logo=out;Object.assign(draft,{zoom:100,x:50,y:50});uploadMessage='Imagen cargada. Ajusta el logotipo y pulsa Guardar cambios.';
+  return out;
  }finally{URL.revokeObjectURL(url);}
 }
-window.PortfolioCover={defaults,clean,preview,view,field,upload,tab(value){if(['identity','colors','logo'].includes(value))editorTab=value;},fit(root){sizeObserver?.disconnect();if(typeof ResizeObserver==='undefined')return;sizeObserver=new ResizeObserver(entries=>{for(const entry of entries){const width=entry.contentRect.width;if(width>0)entry.target.style.height=(width*9/16)+'px';}});root.querySelectorAll('.market-live .cover-slide').forEach(el=>sizeObserver.observe(el));},uploadStatus(text){uploadMessage=text;},get dirty(){return !!draft;},begin(){draft={...saved};},cancel(){draft=null;},load(r){saved=clean(r.design||{});version=r.version??null;draft=null;},payload(){return{p_design:clean(data()),p_expected:version};},palette(i){if(palettes[i]){const [,background,primary,accent,text]=palettes[i];Object.assign(draft,{background,primary,accent,text});}},reset(){Object.assign(draft,{size:26,zoom:100,x:50,y:50,shape:'original'});},remove(){draft.logo='';},theme(){const d=clean(data());return `--portfolio-primary:${d.primary};--portfolio-accent:${d.accent}`;}};
+async function upload(file){if(!file)return;if(!draft)throw Error('Pulsa Editar portada antes de subir el logotipo.');draft.logo=await prepareImage(file);Object.assign(draft,{zoom:100,x:50,y:50});uploadMessage='Imagen cargada. Ajusta el logotipo y pulsa Guardar cambios.';}
+window.PortfolioCover={defaults,clean,preview,view,field,upload,prepareImage,colors(){return clean(data());},tab(value){if(['identity','colors','logo'].includes(value))editorTab=value;},fit(root){sizeObserver?.disconnect();if(typeof ResizeObserver==='undefined')return;sizeObserver=new ResizeObserver(entries=>{for(const entry of entries){const width=entry.contentRect.width;if(width>0)entry.target.style.height=(width*9/16)+'px';}});root.querySelectorAll('.market-live .cover-slide').forEach(el=>sizeObserver.observe(el));},uploadStatus(text){uploadMessage=text;},get dirty(){return !!draft;},begin(){draft={...saved};},cancel(){draft=null;},load(r){saved=clean(r.design||{});version=r.version??null;draft=null;},payload(){return{p_design:clean(data()),p_expected:version};},palette(i){if(palettes[i]){const [,background,primary,accent,text]=palettes[i];Object.assign(draft,{background,primary,accent,text});}},reset(){Object.assign(draft,{size:26,zoom:100,x:50,y:50,shape:'original'});},remove(){draft.logo='';},theme(){const d=clean(data());return `--portfolio-primary:${d.primary};--portfolio-accent:${d.accent}`;}};
 })();
