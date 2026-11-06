@@ -30,3 +30,15 @@
 .problem-image{aspect-ratio:auto;align-self:stretch;width:100%;height:100%;min-height:0}.problem-image img{object-fit:cover;object-position:center}.problem-cards p{text-align:center;align-self:start;width:100%}
 
 .ods-slide-content{position:absolute;inset:0;padding:3cqw 4cqw;display:grid;grid-template-rows:auto minmax(0,1fr);gap:3cqw;color:var(--cover-text)}.ods-slide-content>h2{font-size:3.9cqw;line-height:1.2;text-transform:uppercase;text-align:center;margin:0;color:var(--cover-text);letter-spacing:.03em}.ods-slide-cards{display:grid;grid-template-columns:repeat(var(--ods-count),minmax(0,1fr));align-items:start;gap:2.2cqw;min-height:0}.ods-slide-cards article{min-width:0;display:flex;flex-direction:column;align-items:center;gap:2cqw}.ods-slide-image{width:100%;max-width:23cqw;aspect-ratio:1;position:relative;border-radius:1.2cqw;overflow:hidden;box-shadow:0 0 15px color-mix(in srgb,var(--cover-primary) 30%,transparent)}.ods-slide-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.ods-slide-cards article>p{color:var(--cover-text);font-size:1.8cqw;line-height:1.5;text-align:center;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}.ods-slide-empty{grid-column:1/-1;text-align:center;font-size:2cqw;color:var(--cover-text)}.ods-editor-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}.portfolio-themed.presenting .market-live>.ods-presentation{width:min(100%,calc((100dvh - 400px)*16/9));min-width:min(100%,650px);margin-inline:auto}html:is(:fullscreen,.portfolio-projector):has(.portfolio-themed) .market-live>.ods-presentation{width:min(100%,calc((100dvh - 92px)*16/9));min-width:0;margin:0}
+
+/* Rueda original de la actividad de sexto, adaptada al portafolio. */
+.audience-slide-content{position:absolute;inset:0;display:grid;grid-template-rows:auto minmax(0,1fr);padding:3cqw 4cqw;color:var(--cover-text)}
+.audience-slide-content h2{text-align:center;text-transform:uppercase;font-size:3.9cqw;margin:0 0 1cqw}
+.audience-presentation .wheel{min-height:0;height:100%;padding:0;gap:1cqw 22cqw}
+.audience-presentation .spokes{color:var(--cover-accent);opacity:.55}
+.audience-presentation .wheel-hub{width:15cqw;height:15cqw;border:.3cqw solid var(--cover-accent);background:var(--cover-bg);padding:1cqw;box-shadow:none}
+.audience-presentation .wheel-hub strong{font-size:2.1cqw;color:var(--cover-text)}
+.audience-presentation .audience-card{padding:0;justify-content:center;gap:.6cqw}
+.audience-presentation .audience-picture{width:12cqw;height:12cqw;flex:0 0 12cqw;border:.25cqw solid var(--cover-accent);background:color-mix(in srgb,var(--cover-bg),white 12%)}
+.audience-presentation .audience-picture span{font-size:1.4cqw;color:var(--cover-text)}
+.audience-presentation .audience-card p{font-size:1.7cqw;text-align:center;line-height:1.25;margin:0;max-width:26cqw;overflow-wrap:anywhere;color:var(--cover-text)}
