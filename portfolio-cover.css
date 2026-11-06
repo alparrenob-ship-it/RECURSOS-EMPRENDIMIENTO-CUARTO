@@ -50,3 +50,9 @@
 .ods-slide-cards article{gap:1.6cqw}
 .ods-slide-image{max-width:21cqw;flex:none}
 .ods-slide-cards article>p{width:100%;max-width:21cqw;line-height:1.4;min-height:7.6cqw}
+
+.audience-presentation .wheel-adaptive{display:block;position:relative;min-height:0;height:100%;padding:0}
+.audience-presentation .wheel-adaptive .audience-card{position:absolute;transform:translate(-50%,-50%);width:28%;margin:0;z-index:3}
+.audience-presentation .wheel-adaptive .audience-picture{width:13cqw;height:13cqw;flex-basis:13cqw}
+.audience-presentation .wheel-adaptive .audience-card p{font-size:1.8cqw;max-width:100%;padding:.4cqw .7cqw;border-radius:.5cqw;background:var(--cover-bg)}
+.audience-slide-content{padding:3.8cqw 5cqw 4.5cqw;gap:1.5cqw}
