@@ -42,3 +42,11 @@
 .audience-presentation .audience-picture{width:12cqw;height:12cqw;flex:0 0 12cqw;border:.25cqw solid var(--cover-accent);background:color-mix(in srgb,var(--cover-bg),white 12%)}
 .audience-presentation .audience-picture span{font-size:1.4cqw;color:var(--cover-text)}
 .audience-presentation .audience-card p{font-size:1.7cqw;text-align:center;line-height:1.25;margin:0;max-width:26cqw;overflow-wrap:anywhere;color:var(--cover-text)}
+
+/* Encuadre equilibrado de la diapositiva ODS. */
+.ods-slide-content{padding:4.2cqw 5cqw;gap:2.5cqw}
+.ods-slide-content>h2{font-size:3.5cqw;letter-spacing:.015em;line-height:1.15}
+.ods-slide-cards{align-content:center;align-items:start;gap:2.4cqw;padding-bottom:1cqw}
+.ods-slide-cards article{gap:1.6cqw}
+.ods-slide-image{max-width:21cqw;flex:none}
+.ods-slide-cards article>p{width:100%;max-width:21cqw;line-height:1.4;min-height:7.6cqw}
