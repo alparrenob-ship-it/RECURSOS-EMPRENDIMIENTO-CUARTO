@@ -39,7 +39,7 @@ const p={
 ['Mi Vivero Emprendedor · Plantas y cuidados','Estudiantes y familias interesadas en cuidar plantas','Las personas a veces no saben qué cuidados necesita cada planta.','¿Qué es lo que más te cuesta al cuidar una planta?','Qué información de cuidado necesitan los compradores','Probar minivivero con etiquetas y calendario de riego','🪴']
 ]};
 const wrongAudience=['Automóviles y semáforos','Objetos que no pueden responder'],wrongNeed=['Los colores de los uniformes','El nombre de una película favorita'],wrongQuestions=['¿Cuál es tu caricatura favorita?','¿Qué postre comiste ayer?'],wrongRegister=['Cuántos hermanos tienen','Qué canciones escuchan'];
-let client,teams=[],chosen=null,tab=q.get('vista')==='portafolio'?'portafolio':'teoria',flip=-1,msg='',busy=false,form={audience:'',purpose:'',questions:['','','']},answers=Array(5).fill(null).map(()=>({member:'',answer:null})),draft=false;
+let client,teams=[],chosen=null,tab=q.get('vista')==='portafolio'?'portafolio':q.get('sesion')==='2'?'practica':'teoria',flip=-1,msg='',busy=false,form={audience:'',purpose:'',questions:['','','']},answers=Array(5).fill(null).map(()=>({member:'',answer:null})),draft=false;
 const get=()=>teams.find(t=>t.id===chosen),project=t=>p[t.parallel]?.[t.group-1]||['Proyecto por definir','Estudiantes','Investigar una necesidad','¿Qué necesitan los usuarios?','Qué necesitan','Crear una maqueta','🔎'],task=(pr,i)=>{const banks=[
 ['¿A quién debemos preguntar?',[pr[1],...wrongAudience],0,'Nuestro público objetivo'],
 ['¿Qué problema necesitamos investigar?',[pr[2],...wrongNeed],0,'El problema'],
