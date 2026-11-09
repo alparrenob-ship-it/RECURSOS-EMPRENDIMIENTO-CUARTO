@@ -1,5 +1,5 @@
 /* Tres diapositivas por equipo. Las autorías y la evaluación solo llegan a la sesión docente. */
-(()=>{'use strict';const root=document.getElementById('market'),q=new URLSearchParams(location.search),teacher=q.get('docente')==='1',portfolio=q.get('portafolio')==='1',config=window.AulaSupabaseConfig;
+(()=>{'use strict';if(new URLSearchParams(location.search).get('grado')==='7'&&new URLSearchParams(location.search).get('docente')!=='1'){location.replace('septimo-investigacion-guia.html');return;}const root=document.getElementById('market'),q=new URLSearchParams(location.search),teacher=q.get('docente')==='1',portfolio=q.get('portafolio')==='1',config=window.AulaSupabaseConfig;
 if(portfolio)document.title='Mi portafolio';
 const S={snap:null,slide:portfolio?-1:0,ods:null,odsDraft:null,mode:portfolio||q.get('modo')==='presentacion'?'presentacion':'edit',actor:'',pending:{},authors:{},busy:false,notice:'',error:false,application:false,rubric:null,responseDraft:null};let client,printPrepared=false;
 const E=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
