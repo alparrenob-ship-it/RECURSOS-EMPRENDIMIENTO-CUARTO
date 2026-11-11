@@ -24,3 +24,21 @@
 .student-project-details{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;margin:20px 0}.student-project-details>div{background:#f4f9f7;border:1px solid #e0ece6;border-radius:14px;padding:16px}.student-project-details .student-project-topic{grid-column:1/-1}.student-project-details dt{font-size:12px;font-weight:800;letter-spacing:.045em;text-transform:uppercase;color:#648078}.student-project-details dd{margin:7px 0 0;font-size:18px;line-height:1.5;color:#21484c;overflow-wrap:anywhere}.student-project-topic dd{font-size:24px;font-weight:800}.student-project .section-heading .button{font-size:13px;min-height:40px;padding:9px 13px}@media(max-width:600px){.student-project-details{grid-template-columns:1fr;gap:12px}.student-project-details dd{font-size:17px}.student-project-topic dd{font-size:21px}}
 
 .student-project-details dd,.team-brief dd{white-space:pre-line}.student-project-editor{margin-top:20px;border-top:1px solid #dce9e3;padding-top:16px}.student-project-editor summary{cursor:pointer;font-weight:800;color:#126e61;min-height:44px;line-height:44px}.student-project-editor form{padding-top:12px;max-width:950px}.student-project-editor label{display:block;margin:14px 0;font-weight:700;font-size:14px}.student-project-editor input,.student-project-editor textarea{display:block;width:100%;margin-top:6px;padding:12px;border:1px solid #bfd4cd;border-radius:12px;font-size:17px;font-weight:400;line-height:1.5;background:#fff;resize:vertical}
+
+
+/* Fichas de proyecto asignado: lectura clara para estudiantes de 5.º a 7.º. */
+.assigned-profile{margin-top:22px}
+.assigned-profile-heading{border-bottom:1px solid #dbe9e1;padding-bottom:13px;margin-bottom:18px}
+.assigned-profile-heading h2{font-size:clamp(25px,3vw,34px);color:#174b49;margin:6px 0}
+.assigned-profile-heading p:last-child{font-size:16px;line-height:1.55;color:#4a665d}
+.assigned-profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.assigned-profile-item{min-width:0;border:1px solid #d8e8de;background:#fcfefc;border-radius:16px;padding:20px;overflow-wrap:anywhere}
+.assigned-profile-item:nth-child(3n + 2){background:#f6fbf9}
+.assigned-profile-item:nth-child(9){grid-column:1/-1}
+.assigned-profile-label{display:flex;align-items:center;gap:11px;margin-bottom:12px}
+.assigned-profile-num{display:inline-grid;place-items:center;flex:none;width:34px;height:34px;background:#d7efe3;color:#176a53;border-radius:50%;font-weight:850}
+.assigned-profile-label h3{font-size:clamp(18px,1.8vw,23px);margin:0;color:#164a4b;line-height:1.25}
+.assigned-profile-item p{font-size:clamp(15px,1.2vw,17px);line-height:1.65;margin:0;white-space:pre-line}
+.assigned-profile-item strong{color:#156953}
+.assigned-profile-note{margin:20px 0 0;padding:15px 17px;background:#fff8e9;border:1px solid #e9d5a6;border-radius:12px;line-height:1.55;font-size:15px}
+@media(max-width:780px){.assigned-profile-grid{grid-template-columns:minmax(0,1fr)}.assigned-profile-item:nth-child(9){grid-column:auto}.assigned-profile-item{padding:16px}}
