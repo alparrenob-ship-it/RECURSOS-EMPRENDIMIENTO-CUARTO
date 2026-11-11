@@ -42,3 +42,31 @@
 .assigned-profile-item strong{color:#156953}
 .assigned-profile-note{margin:20px 0 0;padding:15px 17px;background:#fff8e9;border:1px solid #e9d5a6;border-radius:12px;line-height:1.55;font-size:15px}
 @media(max-width:780px){.assigned-profile-grid{grid-template-columns:minmax(0,1fr)}.assigned-profile-item:nth-child(9){grid-column:auto}.assigned-profile-item{padding:16px}}
+
+
+/* Edición institucional extendida de la ficha descriptiva. */
+.assigned-profile-heading p{line-height:1.65}
+.assigned-profile-heading p:nth-of-type(2){font-size:16px;color:#47675d}
+.assigned-profile-print{margin:10px 0 4px}
+.assigned-profile-blocks{display:flex;flex-direction:column;gap:15px}
+.assigned-profile-block{padding-top:13px;border-top:1px solid #e4eee8}
+.assigned-profile-block:first-child{padding-top:0;border-top:0}
+.assigned-profile-block h4{font-size:15px;line-height:1.4;color:#166a58;letter-spacing:.1px;margin:0 0 7px}
+.assigned-profile-block p{font-size:16px;line-height:1.68;text-align:left;white-space:normal;overflow-wrap:anywhere;margin:0}
+.assigned-profile-item{display:flex;flex-direction:column;gap:10px}
+.assigned-profile-source{font-size:13px;color:#657e73;margin:16px 0 0}
+@media print{
+@page{size:A4;margin:16mm 14mm}
+html,body{background:#fff!important}
+body *{visibility:hidden!important}
+#ficha-oficial,#ficha-oficial *{visibility:visible!important}
+#ficha-oficial{position:absolute;inset:0 auto auto 0;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;border:0!important;box-shadow:none!important;background:white!important}
+#ficha-oficial .assigned-profile-grid{display:block!important}
+#ficha-oficial .assigned-profile-item{display:block!important;break-inside:avoid;margin-bottom:12px;padding:14px;border:1px solid #b7cec4;background:#fff!important}
+#ficha-oficial .assigned-profile-print{display:none!important}
+#ficha-oficial .assigned-profile-note{break-inside:avoid}
+#ficha-oficial .assigned-profile-heading h2{font-size:24px}
+#ficha-oficial .assigned-profile-label h3{font-size:18px}
+#ficha-oficial .assigned-profile-block p{font-size:12px;line-height:1.5}
+#ficha-oficial .assigned-profile-block h4{font-size:12px;margin-bottom:4px}
+}
