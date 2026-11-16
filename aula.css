@@ -70,3 +70,20 @@ body *{visibility:hidden!important}
 #ficha-oficial .assigned-profile-block p{font-size:12px;line-height:1.5}
 #ficha-oficial .assigned-profile-block h4{font-size:12px;margin-bottom:4px}
 }
+
+
+/* Propuestas de nombre y eslogan: 10 parejas por proyecto (5º a 7º). */
+.brand-ideas{background:linear-gradient(145deg,#fffdf5,#f5fbff);border:2px solid #b7e1dc;padding:clamp(18px,2.2vw,31px)}
+.brand-ideas-head{display:flex;justify-content:space-between;gap:24px;align-items:center}
+.brand-ideas-head h2{font-size:clamp(24px,2.8vw,35px);color:#163e51;margin:5px 0 12px}
+.brand-ideas-head p:not(.eyebrow){font-size:16px;max-width:900px}
+.brand-ideas-emblem{font-size:clamp(40px,5.5vw,72px);white-space:nowrap;background:white;border:2px solid #d6eae6;border-radius:28px;padding:16px;box-shadow:0 6px 20px #17495612}
+.brand-ideas-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:25px}
+.brand-idea{position:relative;background:#fff;border:2px solid #e0ecec;border-left:7px solid var(--idea-color);border-radius:18px;padding:18px 21px;min-width:0;box-shadow:0 5px 15px #15394309}
+.brand-idea-n{font-size:11px;font-weight:900;letter-spacing:.09em;color:#64747b}
+.brand-idea h3{font-size:clamp(20px,2vw,27px);color:#153b52;margin:7px 0 9px;overflow-wrap:anywhere}
+.brand-idea-slogan{font-size:clamp(16px,1.5vw,19px);font-weight:750;color:#215d63;line-height:1.4;margin:3px 0 12px}
+.brand-idea-label{font-size:12px;color:#607b81;margin:0}
+.brand-ideas-foot{background:#e7f6ec;border:1px solid #b3dccc;border-radius:15px;padding:16px 20px;margin-top:21px;color:#24584b;line-height:1.6}
+@media(max-width:720px){.brand-ideas-grid{grid-template-columns:1fr}.brand-ideas-emblem{display:none}.brand-ideas-head{align-items:flex-start}.brand-idea{padding:15px 17px}}
+@media print{.brand-ideas-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.brand-idea{break-inside:avoid}.brand-ideas{background:#fff}}
